@@ -1,4 +1,5 @@
 # LOVART 🎨✨
+![image](https://github.com/user-attachments/assets/9f076cd0-25db-4188-8041-db4f386a755d)
 
 ## Descripción del Proyecto
 
