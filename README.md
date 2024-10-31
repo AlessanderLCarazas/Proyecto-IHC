@@ -1,5 +1,5 @@
 # 🎨 LOVART: La Red Social para Artistas 🖌️
-![image](https://github.com/user-attachments/assets/9f076cd0-25db-4188-8041-db4f386a755d)
+![image](https://github.com/user-attachments/assets/6b790556-d807-45ae-abb5-a3bce8a1cd8d)
 
 ## 📅 Etapa 1: Propuesta del Proyecto 
 
@@ -76,6 +76,8 @@ La red social ofrecerá:
 - Carece de herramientas robustas de interacción social, limitando la conexión artista-seguidor.
 - Monetización basada en ventas únicas, sin sistema de suscripciones.
 - No está optimizado para gestionar comisiones de arte personalizadas.
+  
+**Behance**: Es una plataforma en línea que permite a los artistas y diseñadores exhibir sus portafolios y descubrir el trabajo de otros creativos. Ofrece una amplia gama de categorías, desde ilustración hasta diseño gráfico y fotografía. Sin embargo, Behance se centra principalmente en la presentación de portafolios y carece de herramientas integradas para la venta directa de obras o la gestión de comisiones personalizadas. Además, aunque permite la interacción social básica, no ofrece sistemas de monetización directa como suscripciones o donaciones recurrentes, lo que limita las oportunidades de ingresos continuos para los artistas.
 
 ---
 
@@ -85,7 +87,30 @@ La red social ofrecerá:
 
 ---
 
-### 7. Referencias Bibliográficas 📚
+### 7. Análisis de Artículos Relevantes 📄
+
+**Artículo: "Understanding User Motivation in Online Creative Communities"**
+
+- **Ventajas**: Este estudio analiza qué motiva a los usuarios a unirse y participar activamente en comunidades creativas en línea. Entre los principales factores destacan el deseo de obtener reconocimiento, la posibilidad de mejorar sus habilidades mediante la retroalimentación, y la motivación por la creación colaborativa. Estos hallazgos son relevantes para nuestro proyecto, ya que podemos diseñar la plataforma para maximizar estos elementos motivadores, proporcionando funcionalidades que fomenten la participación activa y la colaboración entre artistas (Hwang, Chung & Baik, 2013).
+- **Desventajas**: El estudio se enfoca principalmente en plataformas de colaboración creativa sin considerar tanto las necesidades comerciales o de monetización directa. Esta limitación implica que no explora completamente cómo los sistemas de suscripción o las ventas de comisiones pueden influir en la motivación de los usuarios, un aspecto fundamental para nuestro proyecto.
+
+---
+
+**Artículo: "E-Marketplace as a Tool for the Revitalization of Portuguese Craft Industry: The Design Process in the Development of an Online Platform"**
+
+- **Ventajas**: Este artículo proporciona un enfoque detallado sobre el proceso de diseño de interfaces para un e-marketplace, destacando la importancia de crear una plataforma que no solo sea funcional sino también atractiva y alineada con las necesidades del usuario. Resalta cómo se deben aplicar principios de usabilidad y experiencia del usuario (UX) para garantizar que la navegación sea intuitiva y que el flujo de compras sea fluido, lo cual es esencial para cualquier marketplace, incluida nuestra red social para artistas. Este enfoque en el diseño centrado en el usuario es directamente aplicable para maximizar la satisfacción y el compromiso de los artistas y compradores dentro de nuestra plataforma (Arcidiacono, Massarotti, & Saccani, 2023).
+- **Desventajas**: Aunque el artículo es útil para entender el diseño de interfaces de un e-marketplace, se enfoca específicamente en la industria artesanal portuguesa, lo cual puede limitar su aplicación directa a un marketplace de arte digital. Además, no aborda características sociales como la interacción en tiempo real o la monetización a través de suscripciones, que son aspectos clave de nuestro proyecto, por lo que será necesario adaptar y expandir estos conceptos para crear una experiencia más rica y dinámica para los usuarios de nuestra red social.
+
+---
+
+**Artículo: "A Survey on Mobile Social Networks: Applications, Platforms, System Architectures, and Future Research Directions"**
+
+- **Ventajas**: Este artículo ofrece una visión exhaustiva sobre las redes sociales móviles, abarcando las arquitecturas de sistemas, las plataformas utilizadas y las aplicaciones que impulsan su crecimiento. Destaca las mejores prácticas para diseñar arquitecturas escalables y flexibles que puedan manejar grandes volúmenes de datos y conexiones en tiempo real, lo cual es crucial para la experiencia de usuario en una red social para artistas que se espera que tenga una alta tasa de interacción. Además, proporciona una visión clara sobre las tendencias futuras y los desafíos tecnológicos que estas redes podrían enfrentar, lo que nos permitirá anticiparnos a posibles problemas y preparar la plataforma para su evolución continúa (Zamboni, Re, & Zambonelli, 2020).
+- **Desventajas**: Aunque el artículo cubre ampliamente las arquitecturas de sistemas para redes sociales móviles, no se enfoca específicamente en la gestión de contenido creativo o en algoritmos de recomendación personalizados, que son elementos importantes para nuestra red social orientada a artistas. Tampoco se explora en profundidad la integración de herramientas de monetización como las suscripciones o las transacciones financieras, que son fundamentales para el modelo de negocio que queremos implementar (Ding, n.d.).
+
+---
+
+### 8. Referencias Bibliográficas 📚
 - **Hwang, I. Y., Chung, H. C., & Baik, D. K.** (2013). Social network services on smartphones: A survey of research. CORE. [Link](https://core.ac.uk/download/pdf/56364586.pdf)
 - **Arcidiacono, G., Massarotti, N., & Saccani, N.** (2023). A system thinking approach for creating a more sustainable circular economy. Systems, 11(11), 540. [Link](https://doi.org/10.3390/systems11110540)
 - **Zamboni, A., Re, A., & Zambonelli, F.** (2020). Open challenges and future research directions in mobile social networking: A systematic review. Future Internet, 12(11), 195. [Link](https://doi.org/10.3390/fi12110195)
