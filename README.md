@@ -29,8 +29,8 @@ Existe una necesidad de una red social que priorice la interacción, el bienesta
 #### Objetivo General
 Desarrollar una **red social para artistas** que permita la:
 
-- LovanArt busca crear una comunidad donde artistas y entusiastas puedan compartir conocimientos y expresar su creatividad libremente, en un entorno que permita la constante interaccion entre los usuarios. La plataforma prioriza las conexiones auténticas, la retroalimentación y la promocion del arte ya sea de artistas reconocidos, como artistas emergentes, promoviendo un espacio donde los miembros se sientan valorados y motivados a interactuar. Además, ofrece opciones de monetización no intrusivas, como comisiones y suscripciones, que permiten a los creadores obtener ingresos sin comprometer la calidad de la experiencia comunitaria ya que no solo deberian entrar usuarios artistas sino tambien entusiastas dispuestos a visualizar, a interactuar, y a comprar. 🎨
---
+- LovanArt busca crear una comunidad donde artistas y entusiastas puedan compartir conocimientos y expresar su creatividad libremente, en un entorno que permita la constante interaccion entre los usuarios. La plataforma prioriza las conexiones auténticas, la retroalimentación y la promocion del arte ya sea de artistas reconocidos, como artistas emergentes, promoviendo un espacio donde los miembros se sientan valorados y motivados a interactuar. Además, ofrece opciones de monetización no intrusivas, como comisiones y suscripciones, que permiten a los creadores obtener ingresos sin comprometer la calidad de la experiencia comunitaria ya que no solo deberian entrar usuarios artistas sino tambien entusiastas dispuestos a visualizar, a interactuar, y a comprar. Accesibilidad, Flujo de Constante de Usuarios, Retencion de Usuarios 🎨
+  
 ---
 
 #### Objetivos Específicos
