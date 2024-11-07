@@ -14,11 +14,15 @@ Con este enfoque, la plataforma no solo promueve el **crecimiento del arte indep
 ---
 
 ### 2. Planteamiento del problema 🧐
-La monetización y promoción de contenido artístico en línea sigue siendo un reto para muchos artistas visuales, incluyendo ilustradores, creadores de cómics y diseñadores gráficos. Aunque existen plataformas con herramientas de venta y exposición, estos servicios están **fragmentados**, lo cual genera dificultades tanto para:
-- Los **artistas**, que deben gestionar sus cuentas y ventas en múltiples sitios,
-- Como para los **seguidores**, que deben navegar diferentes plataformas para apoyar e interactuar con sus artistas favoritos.
 
-Esta fragmentación **diluye la audiencia y complica la monetización**, limitando el crecimiento del arte independiente.
+En la actualidad, los artistas visuales enfrentan dificultades para encontrar un espacio en línea donde puedan interactuar y conectarse de manera auténtica y fluida con su audiencia. Las plataformas existentes suelen fragmentar la experiencia del usuario y carecen de una interacción significativa, limitando el intercambio de ideas, la retroalimentación creativa y la construcción de una comunidad unificada. 
+
+Para muchos artistas y seguidores, la experiencia en redes sociales es impersonal y transaccional, ya que la mayoría de las plataformas priorizan la monetización y la programación de funcionalidades sobre la experiencia de usuario y la interacción. Esto lleva a que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**, y que el espacio no logre reflejar la creatividad y expresividad del arte que allí se comparte.
+
+Existe una necesidad de una red social que no solo **promueva el intercambio de información y conexión entre los usuarios**, sino que también ofrezca una experiencia visualmente atractiva y única que "venda bonito". Un espacio donde el diseño de la interfaz sea intuitivo, agradable y visualmente estimulante, permitiendo que tanto artistas como seguidores disfruten de una interacción enriquecedora. La monetización debería ser un aspecto secundario, que no interfiera con la experiencia principal de conexión y satisfacción de los usuarios.
+
+Este proyecto busca responder a esta necesidad mediante una plataforma que ponga en primer plano la **interacción social, la comodidad y el bienestar de los usuarios**, y que ofrezca una interfaz que mejore la experiencia de usuario, haciendo que la navegación y el disfrute de contenido artístico sean el foco principal.
+
 
 ---
 
@@ -26,18 +30,23 @@ Esta fragmentación **diluye la audiencia y complica la monetización**, limitan
 
 #### Objetivo General
 Desarrollar una **red social para artistas** que permita la:
-- Venta de comisiones (tipo Mercado Libre o DeviantArt) 🎨
-- Publicación de contenido artístico como fanarts, videos, cómics, y mangas (tipo Instagram) 📸
-- Apoyo financiero a través de membresías y suscripciones de seguidores (tipo Patreon) 💳
+
+- Interacción creativa y el intercambio de conocimientos entre usuarios, proporcionando un espacio donde puedan compartir sus obras, recibir retroalimentación y crear conexiones significativas 🤝
+- Creación de una experiencia visual y de usuario única, con interfaces atractivas y accesibles que logren una navegación fluida y agradable 🎨
+- Fomento de una comunidad en la que los artistas y seguidores se sientan cómodos, felices y satisfechos, promoviendo la interacción social como prioridad 😊
+- Monetización opcional a través de comisiones y suscripciones, ofreciendo a los artistas herramientas para obtener ingresos sin interferir en la experiencia de usuario y la interacción social 💰
 
 ---
 
 #### Objetivos Específicos
-- Crear un **marketplace para comisiones artísticas** donde los artistas puedan personalizar sus ofertas y recibir pedidos personalizados.
-- Facilitar la **publicación de contenido multimedia** (fanarts, videos, cómics, mangas) emulando Instagram.
-- Implementar un **sistema de membresías y suscripciones** para el apoyo financiero recurrente de los seguidores.
-- Ofrecer herramientas de **interacción social** como comentarios, mensajes y grupos para una comunidad activa.
-- **Tienda de recursos** donde los artistas puedan comprar o vender materiales digitales, tutoriales, etc.
+
+- Crear un **marketplace para comisiones artísticas** donde los artistas puedan ofrecer sus obras y servicios de manera opcional, facilitando pedidos personalizados en un entorno cómodo y accesible.
+- Facilitar la **publicación de contenido multimedia** (fanarts, videos, cómics, mangas) emulando plataformas visuales, permitiendo a los artistas compartir su creatividad y conectar con su audiencia.
+- Implementar un **sistema de membresías y suscripciones** como opción secundaria para aquellos seguidores que deseen apoyar financieramente a los artistas de manera recurrente.
+- Ofrecer herramientas de **interacción social** como comentarios, mensajes y grupos, promoviendo una comunidad activa y colaborativa que favorezca el intercambio de ideas y la retroalimentación.
+- Crear una **tienda de recursos** donde los artistas puedan intercambiar materiales digitales, tutoriales y otros recursos de valor, enriqueciendo la experiencia y aprendizaje en la comunidad.
+
+
 
 ---
 
@@ -63,21 +72,44 @@ Desarrollar una **red social para artistas** que permita la:
 
 ### 5. ¿Qué hará el proyecto? 🚧
 La red social ofrecerá:
-- **Marketplace para Comisiones y Ventas de Arte**: Espacio dedicado para comisiones y ventas de arte digital personalizado.
-- **Publicación de Contenido Multimedia**: Compartir imágenes, videos, cómics, y mangas.
-- **Sistema de Membresías y Suscripciones Directas**: Fuente de ingresos recurrente para los creadores.
-- **Interacción Social y Comunidad**: Comunicación e interacción entre artistas y seguidores.
-- **Tienda de Recursos para Artistas**: Venta y compra de recursos digitales como pinceles y tutoriales.
+
+- **Marketplace para Comisiones y Ventas de Arte**: Espacio opcional donde los artistas pueden ofrecer comisiones y ventas de arte digital personalizado sin que esto sea el enfoque principal.
+- **Publicación de Contenido Multimedia**: Permite a los artistas compartir imágenes, videos, cómics y mangas, creando una galería visual donde puedan expresar su creatividad y conectar con una audiencia.
+- **Interacción Social y Comunidad**: Herramientas como comentarios, mensajes y grupos para facilitar la comunicación e intercambio de ideas entre artistas y seguidores, creando una comunidad activa y colaborativa.
+- **Experiencia Visual Única**: Interfaces atractivas y fáciles de usar que transforman la interacción en una experiencia agradable y satisfactoria, promoviendo una plataforma visualmente atractiva que "vende bonito".
+- **Tienda de Recursos para Artistas**: Espacio para intercambiar o adquirir materiales digitales, tutoriales y otros recursos, enriqueciendo la formación y experiencia creativa de los usuarios.
+- **Sistema de Membresías y Suscripciones Directas** (opcional): Fuente de apoyo financiero recurrente para aquellos seguidores que deseen contribuir a los artistas de manera voluntaria, sin interferir en la experiencia de usuario general.
+
 
 ---
 
 ### 6. Análisis de sistemas existentes 🔍
-**ArtStation**: Aunque es una plataforma destacada, presenta algunas limitaciones:
-- Carece de herramientas robustas de interacción social, limitando la conexión artista-seguidor.
-- Monetización basada en ventas únicas, sin sistema de suscripciones.
-- No está optimizado para gestionar comisiones de arte personalizadas.
-  
-**Behance**: Es una plataforma en línea que permite a los artistas y diseñadores exhibir sus portafolios y descubrir el trabajo de otros creativos. Ofrece una amplia gama de categorías, desde ilustración hasta diseño gráfico y fotografía. Sin embargo, Behance se centra principalmente en la presentación de portafolios y carece de herramientas integradas para la venta directa de obras o la gestión de comisiones personalizadas. Además, aunque permite la interacción social básica, no ofrece sistemas de monetización directa como suscripciones o donaciones recurrentes, lo que limita las oportunidades de ingresos continuos para los artistas.
+
+### 6. Análisis de sistemas existentes 🔍
+
+**[ArtStation](https://www.artstation.com/)**: Es una plataforma que permite a los artistas visuales exhibir y vender sus portafolios de manera profesional, principalmente en el sector de la ilustración y el arte digital. Aunque destaca en la presentación de obras, ArtStation se centra en la exposición de portafolios y la venta de piezas, con opciones limitadas de interacción social y sin un sistema de suscripción recurrente.
+![image](https://github.com/user-attachments/assets/08d1cbf3-af0a-401b-85f3-3906c3953bc4)
+
+**[Behance](https://www.behance.net/)**: Es una plataforma en línea que permite a artistas y diseñadores compartir sus portafolios y descubrir el trabajo de otros creativos. Ofrece una amplia gama de categorías, desde ilustración hasta diseño gráfico y fotografía. Sin embargo, Behance está más orientado a la presentación de portafolios que a la monetización directa o la interacción social profunda.
+![image](https://github.com/user-attachments/assets/df0c330a-9c57-48aa-8f6a-2f93b8ba7855)
+
+---
+
+#### Cuadro Comparativo
+
+| Características                          | ArtStation                                                                               | Behance                                                                                  |
+|------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| **¿Qué hace?**                           | Permite exhibir y vender portafolios de arte digital, con un enfoque en ilustración.     | Permite compartir portafolios en diversas categorías artísticas.                         |
+| **¿Qué no hace?**                        | No ofrece interacción social robusta, carece de sistema de suscripciones recurrentes.    | No permite venta directa de obras ni manejo de comisiones personalizadas.                |
+| **Diferencias Positivas**                | Ofrece opciones para la venta directa de obras, con enfoque en la exposición visual.     | Plataforma muy conocida que permite visibilidad en una amplia gama de categorías.        |
+| **Diferencias Negativas**                | Limitada interacción social y sin herramientas de apoyo financiero recurrente.           | Carece de opciones de monetización directa y enfoque en ventas de arte personalizado.    |
+| **Limitaciones**                         | Enfoque limitado en la interacción entre usuarios, monetización solo por ventas únicas.  | Solo permite compartir portafolios, sin opciones de interacción o monetización avanzada. |
+| **Objetivos no cumplidos**               | No cumple con el objetivo de fomentar una comunidad interactiva y visualmente atractiva. | No cumple con la monetización opcional ni con la interacción entre usuarios.             |
+
+---
+
+Este análisis resalta las características principales de ArtStation y Behance, destacando en qué aspectos no cumplen con el enfoque de crear una red social orientada a la interacción, la experiencia visual y la comunidad, con la monetización como un aspecto secundario y opcional.
+
 
 ---
 
