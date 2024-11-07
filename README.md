@@ -16,7 +16,7 @@ Con este enfoque, la plataforma no solo promueve el **crecimiento del arte indep
 ### 2. Planteamiento del problema 🧐
 
 
-Actualmente, los artistas visuales enfrentan dificultades para encontrar un espacio en línea que facilite una conexión auténtica y fluida con su audiencia. Las plataformas existentes fragmentan la experiencia, dispersando a los seguidores y limitando el intercambio de ideas y la construcción de una comunidad sólida. La mayoría de las redes priorizan aspectos transaccionales, lo que hace que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**.
+Actualmente, los artistas visuales enfrentan dificultades para encontrar un espacio en línea que facilite una conexión fluida con su audiencia. Las plataformas existentes fragmentan la experiencia, dispersando a los seguidores y limitando el intercambio de ideas y la construcción de una comunidad sólida. La mayoría de las redes priorizan aspectos transaccionales, lo que hace que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**.
 
 Existe una necesidad de una red social que priorice la interacción, el bienestar del usuario y la construcción de comunidad, donde la monetización sea un aspecto secundario. Este proyecto busca crear un espacio unificado y centrado en la creatividad, que promueva una interacción genuina y satisfactoria entre artistas y seguidores.
 
@@ -30,6 +30,7 @@ Existe una necesidad de una red social que priorice la interacción, el bienesta
 Desarrollar una **red social para artistas** que permita la:
 
 - LovanArt busca crear una comunidad donde artistas y entusiastas puedan compartir conocimientos y expresar su creatividad libremente, en un entorno que permita la constante interaccion entre los usuarios. La plataforma prioriza las conexiones auténticas, la retroalimentación y la promocion del arte ya sea de artistas reconocidos, como artistas emergentes, promoviendo un espacio donde los miembros se sientan valorados y motivados a interactuar. Además, ofrece opciones de monetización no intrusivas, como comisiones y suscripciones, que permiten a los creadores obtener ingresos sin comprometer la calidad de la experiencia comunitaria ya que no solo deberian entrar usuarios artistas sino tambien entusiastas dispuestos a visualizar, a interactuar, y a comprar. 🎨
+--
 ---
 
 #### Objetivos Específicos
