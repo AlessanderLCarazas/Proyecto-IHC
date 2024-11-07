@@ -15,13 +15,11 @@ Con este enfoque, la plataforma no solo promueve el **crecimiento del arte indep
 
 ### 2. Planteamiento del problema 🧐
 
-En la actualidad, los artistas visuales enfrentan dificultades para encontrar un espacio en línea donde puedan interactuar y conectarse de manera auténtica y fluida con su audiencia. Las plataformas existentes suelen fragmentar la experiencia del usuario y carecen de una interacción significativa, limitando el intercambio de ideas, la retroalimentación creativa y la construcción de una comunidad unificada. 
 
-Para muchos artistas y seguidores, la experiencia en redes sociales es impersonal y transaccional, ya que la mayoría de las plataformas priorizan la monetización y la programación de funcionalidades sobre la experiencia de usuario y la interacción. Esto lleva a que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**, y que el espacio no logre reflejar la creatividad y expresividad del arte que allí se comparte.
+Actualmente, los artistas visuales enfrentan dificultades para encontrar un espacio en línea que facilite una conexión auténtica y fluida con su audiencia. Las plataformas existentes fragmentan la experiencia, dispersando a los seguidores y limitando el intercambio de ideas y la construcción de una comunidad sólida. La mayoría de las redes priorizan aspectos transaccionales, lo que hace que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**.
 
-Existe una necesidad de una red social que no solo **promueva el intercambio de información y conexión entre los usuarios**, sino que también ofrezca una experiencia visualmente atractiva y única que "venda bonito". Un espacio donde el diseño de la interfaz sea intuitivo, agradable y visualmente estimulante, permitiendo que tanto artistas como seguidores disfruten de una interacción enriquecedora. La monetización debería ser un aspecto secundario, que no interfiera con la experiencia principal de conexión y satisfacción de los usuarios.
+Existe una necesidad de una red social que priorice la interacción, el bienestar del usuario y la construcción de comunidad, donde la monetización sea un aspecto secundario. Este proyecto busca crear un espacio unificado y centrado en la creatividad, que promueva una interacción genuina y satisfactoria entre artistas y seguidores.
 
-Este proyecto busca responder a esta necesidad mediante una plataforma que ponga en primer plano la **interacción social, la comodidad y el bienestar de los usuarios**, y que ofrezca una interfaz que mejore la experiencia de usuario, haciendo que la navegación y el disfrute de contenido artístico sean el foco principal.
 
 
 ---
@@ -85,7 +83,6 @@ La red social ofrecerá:
 
 ### 6. Análisis de sistemas existentes 🔍
 
-### 6. Análisis de sistemas existentes 🔍
 
 **[ArtStation](https://www.artstation.com/)**: Es una plataforma que permite a los artistas visuales exhibir y vender sus portafolios de manera profesional, principalmente en el sector de la ilustración y el arte digital. Aunque destaca en la presentación de obras, ArtStation se centra en la exposición de portafolios y la venta de piezas, con opciones limitadas de interacción social y sin un sistema de suscripción recurrente.
 ![image](https://github.com/user-attachments/assets/08d1cbf3-af0a-401b-85f3-3906c3953bc4)
@@ -95,7 +92,7 @@ La red social ofrecerá:
 
 ---
 
-#### Cuadro Comparativo
+#### Comparaciones:
 
 | Características                          | ArtStation                                                                               | Behance                                                                                  |
 |------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
@@ -106,9 +103,6 @@ La red social ofrecerá:
 | **Limitaciones**                         | Enfoque limitado en la interacción entre usuarios, monetización solo por ventas únicas.  | Solo permite compartir portafolios, sin opciones de interacción o monetización avanzada. |
 | **Objetivos no cumplidos**               | No cumple con el objetivo de fomentar una comunidad interactiva y visualmente atractiva. | No cumple con la monetización opcional ni con la interacción entre usuarios.             |
 
----
-
-Este análisis resalta las características principales de ArtStation y Behance, destacando en qué aspectos no cumplen con el enfoque de crear una red social orientada a la interacción, la experiencia visual y la comunidad, con la monetización como un aspecto secundario y opcional.
 
 
 ---
