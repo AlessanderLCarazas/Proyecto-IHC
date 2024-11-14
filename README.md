@@ -34,6 +34,7 @@ Desarrollar una **red social para artistas** que permita:
 #### Objetivos Específicos
 
 - Facilitar la **publicación de contenido multimedia** (fanarts, videos, cómics, mangas) emulando plataformas visuales, permitiendo a los artistas compartir su creatividad y conectar con su audiencia.
+- Habilitar un sistema de **recomendación de contenido personalizado** para que los usuarios puedan descubrir nuevos artistas y obras según sus intereses, aumentando la visibilidad de artistas emergentes y favoreciendo la diversidad creativa.
 - Ofrecer herramientas de **interacción social** como comentarios, mensajes y grupos, promoviendo una comunidad activa y colaborativa que favorezca el intercambio de ideas y la retroalimentación.
 - Fomentar la **colaboración entre artistas y entusiastas** mediante la creación de proyectos colaborativos, desafíos artísticos y eventos virtuales, generando un ambiente de aprendizaje mutuo y conexión creativa, semejante al canvas de Webtoon.
 - Implementar un programa de **mentores y aprendizaje** en el cual artistas más experimentados puedan guiar y apoyar a miembros nuevos o emergentes, promoviendo el crecimiento profesional y artístico en la plataforma, semejante a Medibang o Alpaca.
