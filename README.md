@@ -20,27 +20,26 @@ Actualmente, los artistas visuales enfrentan dificultades para encontrar un espa
 
 Existe una necesidad de una red social que priorice la interacción, el bienestar del usuario y la construcción de comunidad, donde la monetización sea un aspecto secundario. Este proyecto busca crear un espacio unificado y centrado en la creatividad, que promueva una interacción genuina y satisfactoria entre artistas y seguidores.
 
-
-
 ---
 
 ### 3. Objetivos 🎯
 
 #### Objetivo General
-Desarrollar una **red social para artistas** que permita la:
+Desarrollar una **red social para artistas** que permita:
 
-- LovanArt busca crear una comunidad donde artistas y entusiastas puedan compartir conocimientos y expresar su creatividad libremente, en un entorno que permita la constante interaccion entre los usuarios. La plataforma prioriza las conexiones auténticas, la retroalimentación y la promocion del arte ya sea de artistas reconocidos, como artistas emergentes, promoviendo un espacio donde los miembros se sientan valorados y motivados a interactuar. Además, ofrece opciones de monetización no intrusivas, como comisiones y suscripciones, que permiten a los creadores obtener ingresos sin comprometer la calidad de la experiencia comunitaria ya que no solo deberian entrar usuarios artistas sino tambien entusiastas dispuestos a visualizar, a interactuar, y a comprar. Accesibilidad, Flujo de Constante de Usuarios, Retencion de Usuarios 🎨
+- LovanArt busca crear una comunidad donde artistas y entusiastas puedan compartir conocimientos y expresar su creatividad libremente, en un entorno que permita la constante interaccion entre los usuarios. La plataforma prioriza las conexiones, la retroalimentación y la promocion del arte ya sea de artistas reconocidos, como artistas emergentes, promoviendo un espacio donde los miembros se sientan valorados y motivados a interactuar. Además, ofrece opciones de monetización no intrusivas, como comisiones y suscripciones, que permiten a los creadores obtener ingresos sin comprometer la calidad de la experiencia comunitaria ya que no solo deberian entrar usuarios artistas sino tambien entusiastas dispuestos a visualizar, a interactuar, y a comprar. Entre las medidas mas relevantes para evaluar el cumplimiento de la plataforma se encuentra el incremento en la participación activa de la comunidad, tanto en términos de interacciones (número de comentarios, "me gusta", y compartidos) como en la cantidad de contenido publicado por los artistas y usuarios. Las métricas de éxito incluirán la retención de usuarios activos (porcentaje de usuarios que vuelven a la plataforma semanal o mensualmente) al igual como la cantidad de tiempo en general que ocupan en la misma durante una conexion, la tasa de creación de contenido (número de publicaciones y obras subidas diariamente o mensualmente), y finalmente el promedio de interacciones por publicación (comentarios y "me gusta" por obra compartida). Estas métricas permitirán evaluar de manera concreta si la plataforma cumple con sus objetivos de participación, y conexión entre usuarios.🎨
   
 ---
 
 #### Objetivos Específicos
 
-- Crear un **marketplace para comisiones artísticas** donde los artistas puedan ofrecer sus obras y servicios de manera opcional, facilitando pedidos personalizados en un entorno cómodo y accesible.
 - Facilitar la **publicación de contenido multimedia** (fanarts, videos, cómics, mangas) emulando plataformas visuales, permitiendo a los artistas compartir su creatividad y conectar con su audiencia.
-- Implementar un **sistema de membresías y suscripciones** como opción secundaria para aquellos seguidores que deseen apoyar financieramente a los artistas de manera recurrente.
 - Ofrecer herramientas de **interacción social** como comentarios, mensajes y grupos, promoviendo una comunidad activa y colaborativa que favorezca el intercambio de ideas y la retroalimentación.
+- Fomentar la **colaboración entre artistas y entusiastas** mediante la creación de proyectos colaborativos, desafíos artísticos y eventos virtuales, generando un ambiente de aprendizaje mutuo y conexión creativa, semejante al canvas de Webtoon.
+- Implementar un programa de **mentores y aprendizaje** en el cual artistas más experimentados puedan guiar y apoyar a miembros nuevos o emergentes, promoviendo el crecimiento profesional y artístico en la plataforma, semejante a Medibang o Alpaca.
 - Crear una **tienda de recursos** donde los artistas puedan intercambiar materiales digitales, tutoriales y otros recursos de valor, enriqueciendo la experiencia y aprendizaje en la comunidad.
-
+- Implementar un **sistema de membresías y suscripciones** como opción secundaria para aquellos seguidores que deseen apoyar financieramente a los artistas de manera recurrente.
+- Crear un **marketplace para comisiones artísticas** donde los artistas puedan ofrecer sus obras y servicios de manera opcional, facilitando pedidos personalizados en un entorno cómodo y accesible.
 
 
 ---
