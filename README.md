@@ -16,7 +16,7 @@ Con este enfoque, la plataforma no solo promueve el **crecimiento del arte indep
 ### 2. Planteamiento del problema 🧐
 
 
-Actualmente, los artistas visuales enfrentan dificultades para encontrar un espacio en línea que facilite una conexión fluida con su audiencia. Las plataformas existentes fragmentan la experiencia, dispersando a los seguidores y limitando el intercambio de ideas y la construcción de una comunidad sólida. La mayoría de las redes priorizan aspectos transaccionales, lo que hace que los usuarios no se sientan completamente **cómodos, felices ni satisfechos**.
+Actualmente, los artistas visuales enfrentan dificultades para encontrar un espacio en línea que facilite una conexión fluida con su audiencia. Las plataformas existentes fragmentan la experiencia, dispersando a los seguidores y limitando el intercambio de ideas y la construcción de una comunidad sólida. La mayoría de las redes priorizan aspectos transaccionales, lo que hace que los usuarios no se sientan completamente **satisfechos con las plataformas actuales**, (esto es sustentado en las entrevistas hechas).
 
 Existe una necesidad de una red social que priorice la interacción, el bienestar del usuario y la construcción de comunidad, donde la monetización sea un aspecto secundario. Este proyecto busca crear un espacio unificado y centrado en la creatividad, que promueva una interacción genuina y satisfactoria entre artistas y seguidores.
 
