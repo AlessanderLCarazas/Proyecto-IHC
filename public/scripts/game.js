@@ -32,18 +32,21 @@ async function loadMap() {
   lienzoSprites.push(lienzoSprite);
 
   characterSprite = await loadCharacter();
+  const tolerance = 6;
 
   mapSprite.on("pointerdown", (event) => {
     const position = event.data.global;
     characterSprite = moveCharacterTo(position.x, position.y);
-    console.log("Nuevo characterSprite:", characterSprite);
   });
 
   app.ticker.add(() => {
     const characterBounds = characterSprite.getBounds();
     const lienzoBounds = lienzoSprite.getBounds();
-    if (characterBounds == lienzoBounds) {
-        asd
+    console.log(characterBounds);
+    console.log(lienzoBounds);
+    if (Math.abs(characterBounds.x - lienzoBounds.x) < tolerance &&
+        Math.abs(characterBounds.y - lienzoBounds.y) < tolerance) {
+        window.location.href = "gallery.html";
     }
   });
 }
