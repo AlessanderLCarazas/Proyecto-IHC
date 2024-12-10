@@ -8,12 +8,19 @@ const app = new PIXI.Application({
     resolution: 1,
   });
 
-  app.renderer.backgroundColor = 0xff1234;
+app.renderer.backgroundColor = 0xff1234;
 
-  document.body.appendChild(app.view);
-  initializePixiApplication(app);
+document.body.appendChild(app.view);
+initializePixiApplication(app);
+
+let characterSprite;
 
   async function loadGallery() {
+    const params = new URLSearchParams(window.location.search);
+    const lienzoIndex = params.get("lienzo") || "0"; // Valor predeterminado si no hay índice
+
+    const galleryTexturePath = `./assets/galeria${lienzoIndex}.jpg`;
+
     const galleryTexture = await PIXI.Assets.load("./assets/gallery.jpg");
     const gallerySprite = new PIXI.Sprite(galleryTexture);
 
@@ -23,30 +30,35 @@ const app = new PIXI.Application({
     gallerySprite.interactive = true;
     gallerySprite.buttonMode = true;
 
-    gallerySprite.on("pointerdown", (event) => {
-      const position = event.data.global;
-      moveCharacterTo(position.x, position.y);
-    });
+    const tolerance = 25
 
     app.stage.addChild(gallerySprite);
-    loadCharacter();
+    characterSprite = await loadCharacter(600, 450, 1,1);
 
-    if (condition == "Toca la Puerta") {
-      //Te retorna a la vista LoadMap()
-    }
-    
+    gallerySprite.on("pointerdown", (event) => {
+      const position = event.data.global;
+      characterSprite = moveCharacterTo(position.x, position.y);
+    });
+
+    const scaleX = app.screen.width / 1920;
+    const scaleY = app.screen.height / 1080;
+
+    app.ticker.add(() => {
+      const characterBounds = characterSprite.getBounds();
+      console.log(`Character position - X: ${characterSprite.x}, Y: ${characterSprite.y}`);
+      
+      if (Math.abs(characterBounds.x - 265*scaleX) < tolerance &&
+        Math.abs(characterBounds.y - 600*scaleY) < tolerance) {
+        window.location.href = "cuadro.html";
+        }
+      else if (Math.abs(characterBounds.x - 520*scaleX) < tolerance &&
+        Math.abs(characterBounds.y - 600*scaleY) < tolerance) {
+        window.location.href = "cuadro.html";
+        }
+      else if (Math.abs(characterBounds.x - 700*scaleX) < tolerance &&
+        Math.abs(characterBounds.y - 600*scaleY) < tolerance) {
+        window.location.href = "cuadro.html";
+        }
+    });
   }
-
-  async function loadPuerta() {
-    const puertaTexture = await PIXI.Assets.load("./assets/puerta.jpg");
-    puertaSprite = new PIXI.Sprite(puertaTexture);
-    puertaSprite.x = app.screen.width / 1.4;
-    puertaSprite.y = app.screen.height / 2;
-
-    puertaSprite.anchor.set(0.5, 0.5);
-    puertaSprite.scale.set(1, 1);
-
-    app.stage.addChild(puertaSprite);
-  }
-
   loadGallery();

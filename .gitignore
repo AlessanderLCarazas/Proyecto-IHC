@@ -1,6 +1,8 @@
 # Logs
 *.png~
 *.jpg~
+*.kra
+*.kra~
 logs
 *.log
 npm-debug.log*
@@ -69,3 +71,4 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
