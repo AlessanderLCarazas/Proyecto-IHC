@@ -56,7 +56,25 @@ function moveCharacterTo(targetX, targetY) {
 
   return characterSprite;
 }
+// Función para cargar imágenes sin movimiento
+async function loadSomething(directionTexture, targetX, targetY, scale1, scale2) {
+  const texture = await PIXI.Assets.load(directionTexture);
+  const sprite = new PIXI.Sprite(texture);
 
+  // Escalar las coordenadas lógicas a las dimensiones reales de la pantalla
+  const scaleX = app.screen.width / 1920;
+  const scaleY = app.screen.height / 1080;
+
+  sprite.x = targetX * scaleX;
+  sprite.y = targetY * scaleY;
+
+  sprite.anchor.set(0.5, 0.5);
+  sprite.scale.set(scale1, scale2);
+
+  app.stage.addChild(sprite);
+
+  return sprite;
+}
 // Función para cargar algo (imágenes) con interacción
 async function loadSomethingInteractive(directionTexture, targetX, targetY, scale1, scale2) {
   const texture = await PIXI.Assets.load(directionTexture);
