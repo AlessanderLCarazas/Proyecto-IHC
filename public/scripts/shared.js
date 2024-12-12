@@ -58,7 +58,7 @@ function moveCharacterTo(targetX, targetY) {
 }
 
 // Función para cargar algo (imágenes) con interacción
-async function loadSomething(directionTexture, targetX, targetY, scale1, scale2) {
+async function loadSomethingInteractive(directionTexture, targetX, targetY, scale1, scale2) {
   const texture = await PIXI.Assets.load(directionTexture);
   const sprite = new PIXI.Sprite(texture);
 
@@ -110,4 +110,4 @@ async function loadSomething(directionTexture, targetX, targetY, scale1, scale2)
 }
 
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive };
