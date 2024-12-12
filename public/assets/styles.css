@@ -1,0 +1,149 @@
+/* Modal para el taberna-logo */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#modal-content {
+  position: relative;
+  background-color: transparent;
+  text-align: center;
+  width: 600px;
+  height: auto;
+}
+
+#modal-image {
+  width: 100%;
+  height: auto;
+}
+
+#modal-buttons {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+}
+
+#modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+#accept-button, #decline-button {
+  position: absolute;
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#accept-button {
+  top: 75%;
+  left: 2%;
+}
+
+#decline-button {
+  top: 75%;
+  left: 79%;
+}
+
+#modal-buttons button:hover {
+  border: 2px solid #fff;
+}
+
+#accept-button:hover, #decline-button:hover {
+  border: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+/* Estilo general del fondo */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./assets/taberna-fondo.jpg'); /* Ruta del fondo */
+  background-size: cover; /* Ajusta para que cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  height: 100vh; /* Altura de la ventana completa */
+  width: 100vw; /* Ancho de la ventana completa */
+}
+
+#taberna-container {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el texto */
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Modal para salir de la taberna */
+#exit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#exit-modal-content {
+  position: relative;
+  background-color: transparent;
+  text-align: center;
+  width: 600px; /* Ajusta según el tamaño de tu imagen */
+  height: auto;
+}
+
+#exit-modal-image {
+  width: 100%;
+  height: auto;
+}
+
+#exit-accept-button,
+#exit-decline-button {
+  position: absolute;
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#exit-accept-button {
+  bottom:27.6%;
+  left: 20%; /* Ajustar para centrar en el botón ACEPTAR */
+}
+
+#exit-decline-button {
+  bottom: 27.6%;
+  right: 19%; /* Ajustar para centrar en el botón RECHAZAR */
+}
+
+#exit-accept-button:hover,
+#exit-decline-button:hover {
+  border: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}

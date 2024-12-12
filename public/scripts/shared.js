@@ -21,27 +21,29 @@ async function loadCharacter() {
   return characterSprite;
 }
 
+let isInTaberna = false; // Bandera global para identificar si estamos en la taberna
+
 function moveCharacterTo(targetX, targetY) {
   const speed = 5;
   app.ticker.add(function animate() {
-    const dx = targetX - characterSprite.x;
-    const dy = targetY - characterSprite.y;
+      const dx = targetX - characterSprite.x;
+      const dy = isInTaberna ? 0 : (targetY - characterSprite.y); // Solo mueve en X si está en la taberna
 
-    const distance = Math.sqrt(dx * dx + dy * dy);
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < speed) {
-      characterSprite.x = targetX;
-      characterSprite.y = targetY;
-      app.ticker.remove(animate);
-    }
+      if (distance < speed) {
+          characterSprite.x = targetX;
+          if (!isInTaberna) characterSprite.y = targetY; // Mover en Y solo fuera de la taberna
+          app.ticker.remove(animate);
+      }
 
-    const angle = Math.atan2(dy, dx);
-    characterSprite.x += Math.cos(angle) * speed;
-    characterSprite.y += Math.sin(angle) * speed;
-    
+      const angle = Math.atan2(dy, dx);
+      characterSprite.x += Math.cos(angle) * speed;
+      characterSprite.y += Math.sin(angle) * speed;
   });
   return characterSprite;
 }
+
 
 // Exportar las funciones
 export { initializePixiApplication, loadCharacter, moveCharacterTo };

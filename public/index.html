@@ -24,11 +24,18 @@
     -->
   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
   <script src="https://pixijs.download/v7.1.1/pixi.min.js"></script>
-
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
-<body>
-  <a href="gallery.html">Lienzo</a>
-  <script type="module" src="./scripts/game.js"></script>
+<div id="modal" style="display: none;">
+  <div id="modal-content">
+    <img src="./assets/taberna-logo.png" alt="Taberna del Mojo" id="modal-image">
+    <button id="accept-button"></button>
+    <button id="decline-button"></button>
+  </div>
+</div>
+
+<script type="module" src="./scripts/game.js"></script>
 </body>
+
 </html>
