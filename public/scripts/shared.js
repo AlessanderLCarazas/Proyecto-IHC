@@ -127,5 +127,27 @@ async function loadSomethingInteractive(directionTexture, targetX, targetY, scal
   return sprite;
 }
 
+//IMAGENES
+// Función para guardar la posición de las imágenes en localStorage
+function saveImagePosition(imageId, x, y) {
+  let savedPositions = JSON.parse(localStorage.getItem('imagePositions')) || [];
+
+  // Añadir o actualizar la posición de la imagen
+  const index = savedPositions.findIndex(position => position.imageId === imageId);
+  if (index === -1) {
+    savedPositions.push({ imageId, x, y });
+  } else {
+    savedPositions[index] = { imageId, x, y }; // Si ya existe, actualiza la posición
+  }
+
+  localStorage.setItem('imagePositions', JSON.stringify(savedPositions));
+}
+
+// Función para cargar las posiciones de las imágenes desde localStorage
+function loadImagePositions() {
+  return JSON.parse(localStorage.getItem('imagePositions')) || [];
+}
+
+
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions };
