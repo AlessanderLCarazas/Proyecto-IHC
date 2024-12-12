@@ -32,7 +32,7 @@ async function loadMap() {
   lienzoSprites.push(lienzoSprite);
 
   characterSprite = await loadCharacter();
-  const tolerance = 6;
+  const tolerance = 20;
 
   mapSprite.on("pointerdown", (event) => {
     const position = event.data.global;
