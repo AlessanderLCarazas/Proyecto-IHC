@@ -21,7 +21,7 @@ async function loadGallery() {
   const lienzoIndex = params.get("lienzo") || "0"; // Valor por defecto si no se pasa el índice
 
   const galleryTexturePath = `./assets/galeria${lienzoIndex}.jpg`; // Ruta de la galería
-  const galleryTexture = await PIXI.Assets.load(galleryTexturePath);
+  const galleryTexture = await PIXI.Assets.load('./assets/gallery.jpg');
   const gallerySprite = new PIXI.Sprite(galleryTexture);
 
   gallerySprite.width = app.screen.width;
@@ -29,6 +29,7 @@ async function loadGallery() {
 
   gallerySprite.interactive = true;
   gallerySprite.buttonMode = true;
+  const tolerance = 25
 
   app.stage.addChild(gallerySprite);
 
@@ -38,6 +39,27 @@ async function loadGallery() {
   gallerySprite.on("pointerdown", (event) => {
     const position = event.data.global;
     characterSprite = moveCharacterTo(position.x, position.y);
+  });
+
+  const scaleX = app.screen.width / 1920;
+  const scaleY = app.screen.height / 1080;
+
+  app.ticker.add(() => {
+    const characterBounds = characterSprite.getBounds();
+    console.log('Character position - X: ${characterSprite.x}, Y: ${characterSprite.y}');
+
+    if (Math.abs(characterBounds.x - 265 * scaleX) < tolerance &&
+      Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
+      window.location.href = "cuadro.html";
+    }
+    else if (Math.abs(characterBounds.x - 520 * scaleX) < tolerance &&
+      Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
+      window.location.href = "cuadro.html";
+    }
+    else if (Math.abs(characterBounds.x - 700 * scaleX) < tolerance &&
+      Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
+      window.location.href = "cuadro.html";
+    }
   });
 }
 
@@ -61,6 +83,7 @@ function loadSavedImages() {
       // Guardar la nueva posición
       saveImagePosition(position.imageId, newPosition.x, newPosition.y);
     });
+
   });
 }
 
@@ -72,7 +95,7 @@ document.getElementById("image-upload").addEventListener("change", (event) => {
     const reader = new FileReader();
 
     reader.onload = async (e) => {
-      const newImagePath = `./assets/assetsUser/galeriaImagen${Math.floor(Math.random() * 10)}.jpg`; // Ruta a la carpeta assetsUser
+      const newImagePath = `./assets/assetsUser/galeriaImagen3.jpg`; // Ruta a la carpeta assetsUser
       const newImage = await loadSomethingInteractive(newImagePath, 600, 450, 1, 1); // Cargar la imagen en PixiJS
 
       newImage.interactive = true;
