@@ -1,52 +1,100 @@
-import { initializePixiApplication, loadCharacter, moveCharacterTo } from "./shared.js";
+import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomethingInteractive, saveImagePosition, loadImagePositions } from './shared.js';
 
 const app = new PIXI.Application({
-    width: window.innerWidth,
-    height: window.innerHeight,
-    antialiasing: true,
-    transparent: false,
-    resolution: 1,
+  width: window.innerWidth,
+  height: window.innerHeight,
+  antialiasing: true,
+  transparent: false,
+  resolution: 1,
+});
+
+app.renderer.backgroundColor = 0xff1234;
+document.body.appendChild(app.view);
+
+initializePixiApplication(app); // Inicializa la aplicación de PixiJS
+
+let characterSprite; // El sprite del personaje
+
+// Cargar la galería
+async function loadGallery() {
+  const params = new URLSearchParams(window.location.search);
+  const lienzoIndex = params.get("lienzo") || "0"; // Valor por defecto si no se pasa el índice
+
+  const galleryTexturePath = `./assets/galeria${lienzoIndex}.jpg`; // Ruta de la galería
+  const galleryTexture = await PIXI.Assets.load(galleryTexturePath);
+  const gallerySprite = new PIXI.Sprite(galleryTexture);
+
+  gallerySprite.width = app.screen.width;
+  gallerySprite.height = app.screen.height;
+
+  gallerySprite.interactive = true;
+  gallerySprite.buttonMode = true;
+
+  app.stage.addChild(gallerySprite);
+
+  // Cargar el personaje
+  characterSprite = await loadCharacter(600, 450, 1, 1);
+
+  gallerySprite.on("pointerdown", (event) => {
+    const position = event.data.global;
+    characterSprite = moveCharacterTo(position.x, position.y);
   });
+}
 
-  app.renderer.backgroundColor = 0xff1234;
+// Cargar posiciones guardadas al iniciar
+function loadSavedImages() {
+  const savedPositions = loadImagePositions();
 
-  document.body.appendChild(app.view);
-  initializePixiApplication(app);
+  savedPositions.forEach(async (position) => {
+    const newImage = await loadSomethingInteractive(position.imageId, position.x, position.y, 1, 1); // Cargar la imagen con la posición guardada
 
-  async function loadGallery() {
-    const galleryTexture = await PIXI.Assets.load("./assets/gallery.jpg");
-    const gallerySprite = new PIXI.Sprite(galleryTexture);
+    newImage.x = position.x;
+    newImage.y = position.y;
 
-    gallerySprite.width = app.screen.width;
-    gallerySprite.height = app.screen.height;
+    newImage.interactive = true;
+    newImage.buttonMode = true;
 
-    gallerySprite.interactive = true;
-    gallerySprite.buttonMode = true;
+    newImage.on("pointerdown", (event) => {
+      const newPosition = event.data.global;
+      characterSprite = moveCharacterTo(newPosition.x, newPosition.y);
 
-    gallerySprite.on("pointerdown", (event) => {
-      const position = event.data.global;
-      moveCharacterTo(position.x, position.y);
+      // Guardar la nueva posición
+      saveImagePosition(position.imageId, newPosition.x, newPosition.y);
     });
+  });
+}
 
-    app.stage.addChild(gallerySprite);
-    loadCharacter();
+// Función para manejar la subida de imágenes
+document.getElementById("image-upload").addEventListener("change", (event) => {
+  const file = event.target.files[0]; // Obtener el archivo seleccionado
 
-    if (condition == "Toca la Puerta") {
-      //Te retorna a la vista LoadMap()
-    }
-    
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = async (e) => {
+      const newImagePath = `./assets/assetsUser/galeriaImagen${Math.floor(Math.random() * 10)}.jpg`; // Ruta a la carpeta assetsUser
+      const newImage = await loadSomethingInteractive(newImagePath, 600, 450, 1, 1); // Cargar la imagen en PixiJS
+
+      newImage.interactive = true;
+      newImage.buttonMode = true;
+
+      newImage.on("pointerdown", (event) => {
+        const position = event.data.global;
+
+        // Mover el personaje
+        characterSprite = moveCharacterTo(position.x, position.y);
+
+        // Guardar la posición de la imagen
+        saveImagePosition(newImagePath, position.x, position.y); // Usar la ruta como identificador único
+      });
+    };
+
+    reader.readAsDataURL(file); // Lee el archivo como una URL de datos
   }
+});
 
-  async function loadPuerta() {
-    const puertaTexture = await PIXI.Assets.load("./assets/puerta.jpg");
-    puertaSprite = new PIXI.Sprite(puertaTexture);
-    puertaSprite.x = app.screen.width / 1.4;
-    puertaSprite.y = app.screen.height / 2;
+// Llamada inicial a la función para cargar la galería
+loadGallery();
 
-    puertaSprite.anchor.set(0.5, 0.5);
-    puertaSprite.scale.set(1, 1);
-
-    app.stage.addChild(puertaSprite);
-  }
-
-  loadGallery();
+// Cargar las imágenes y posiciones guardadas
+loadSavedImages();
