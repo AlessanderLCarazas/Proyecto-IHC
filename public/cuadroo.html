@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Cuadro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('./assets/VISTACUADRO.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .details-container {
+      text-align: center;
+      background: rgba(225, 228, 178, 0.8); /* Fondo blanco semitransparente */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .details-container img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .details-container h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .details-container p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .details-container a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #8f7645;
+      color: #f0e5be;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .details-container a:hover {
+      background: #111311;
+    }
+  </style>
+</head>
+<body>
+  <div class="details-container">
+    <img id="cuadro-image" alt="Imagen del cuadro">
+    <h1 id="cuadro-title">Título del Cuadro</h1>
+    <p id="cuadro-description">Descripción del cuadro.</p>
+    <a href="tienda.html">Volver a la Tienda</a>
+  </div>
+
+  <script>
+    // Obtener el parámetro "id" de la URL
+    const params = new URLSearchParams(window.location.search);
+    const cuadroId = params.get('id');
+
+    // Datos de ejemplo para los cuadros
+    const cuadrosData = {
+      cuadroo1: {
+        title: "Dibujo 1",
+        description: "Este es el primer dibujo de la colección, destacando por su estilo único y vibrante. Sus líneas dinámicas y contrastes de colores transmiten una energía que invita a explorar los detalles más sutiles de la obra.",
+        image: "./assets/DIBUJO1.png"
+      },
+      cuadroo2: {
+        title: "Dibujo 2",
+        description: "Este es el segundo dibujo, con trazos que evocan emociones profundas. La composición refleja un equilibrio entre caos y orden, capturando la esencia de emociones humanas complejas con una estética cautivadora.",
+        image: "./assets/DIBUJO2.png"
+      },
+      cuadroo3: {
+        title: "Dibujo 3",
+        description: "El tercer dibujo se caracteriza por su combinación de colores vivos y diseño abstracto. Los patrones entrelazados crean una narrativa visual que invita al espectador a interpretar significados más allá de la superficie.",
+        image: "./assets/DIBUJO3.png"
+      }
+    };    
+
+    // Buscar los detalles del cuadro actual
+    const cuadroData = cuadrosData[cuadroId] || {
+      title: "Cuadro no encontrado",
+      description: "No se pudo encontrar información sobre este cuadro.",
+      image: "./assets/not-found.png" // Imagen por defecto en caso de error
+    };
+
+    // Mostrar los datos del cuadro en la página
+    document.getElementById('cuadro-image').src = cuadroData.image;
+    document.getElementById('cuadro-title').textContent = cuadroData.title;
+    document.getElementById('cuadro-description').textContent = cuadroData.description;
+  </script>
+</body>
+</html>
