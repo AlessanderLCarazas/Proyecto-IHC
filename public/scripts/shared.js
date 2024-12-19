@@ -3,6 +3,7 @@ let characterSprite; // Sprite del personaje
 let sprite;
 let isImageMoving = false; // Variable para controlar si una imagen se está moviendo
 let isCharacterMoving = false; // Variable para controlar si el personaje se está moviendo
+let isCarretaMoving = false;
 
 // Inicializa la instancia de la aplicación PIXI
 function initializePixiApplication(pixiApp) {
@@ -93,35 +94,6 @@ async function loadSomethingInteractive(directionTexture, targetX, targetY, scal
   sprite.interactive = true;
   sprite.buttonMode = true;
 
-  // Función de mover la imagen (para arrastrar)
-  sprite.on("pointerdown", (event) => {
-    if (!isCharacterMoving) { // Solo permitir mover la imagen si el personaje no se está moviendo
-      isImageMoving = true;  // Marcar que una imagen está en movimiento
-      sprite.data = event.data;
-      sprite.dragging = true;
-    }
-  });
-
-  sprite.on("pointermove", () => {
-    if (sprite.dragging) {
-      const newPosition = sprite.data.getLocalPosition(sprite.parent);
-      sprite.x = newPosition.x;
-      sprite.y = newPosition.y;
-    }
-  });
-
-  sprite.on("pointerup", () => {
-    sprite.dragging = false;
-    sprite.data = null;
-    isImageMoving = false;  // Desmarcar el movimiento de la imagen
-  });
-
-  sprite.on("pointerupoutside", () => {
-    sprite.dragging = false;
-    sprite.data = null;
-    isImageMoving = false;  // Desmarcar el movimiento de la imagen si el ratón sale del área
-  });
-
   app.stage.addChild(sprite);
 
   return sprite;
@@ -148,6 +120,29 @@ function loadImagePositions() {
   return JSON.parse(localStorage.getItem('imagePositions')) || [];
 }
 
+function moveCarrete(carreteSprite, targetX, targetY) {
+  const speed = 5;
+  isCarretaMoving = true; // Marcar que el personaje se está moviendo
+
+  app.ticker.add(function animate() {
+    const dx = targetX - carreteSprite.x;
+    const dy = targetY - carreteSprite.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < speed) {
+      carreteSprite.x = targetX;
+      carreteSprite.y = targetY;
+      app.ticker.remove(animate);
+      isCarretaMoving = false; // El movimiento del personaje ha terminado
+    }
+
+    const angle = Math.atan2(dy, dx);
+    carreteSprite.x += Math.cos(angle) * speed;
+    carreteSprite.y += Math.sin(angle) * speed;
+  });
+  return carreteSprite;
+
+}
 
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete };

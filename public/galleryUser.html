@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LovArtGame</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/11.0.2/firebase-performance-compat.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <script src="https://pixijs.download/v7.1.1/pixi.min.js"></script>
+  <style>
+    canvas {
+      position: absolute;
+      /* Posicionarlo encima de otros elementos */
+      top: 0;
+      left: 0;
+      z-index: 1;
+      /* Asegura que el lienzo esté por encima de otros elementos */
+    }
+
+    .styled-button {
+      position: absolute;
+      left: 10px;
+      z-index: 2;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #6a0dad, #b565f7);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .styled-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .styled-button:active {
+      transform: scale(0.98);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ajusta la posición específica de cada botón */
+    label[for="image-upload"] {
+      top: 50px;
+    }
+
+    #load-more {
+      top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="image-upload" style="display: none;" />
+  <label for="image-upload" class="styled-button">Subir Imagen</label>
+  <button id="load-more" class="styled-button">Cargar Imagen</button>
+  <script type="module" src="./scripts/gallery2.js"></script>
+</body>
+
+</html>
