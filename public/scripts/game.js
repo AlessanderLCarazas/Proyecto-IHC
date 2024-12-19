@@ -39,6 +39,27 @@ async function loadMap() {
   mapSprite.buttonMode = true;
 
   app.stage.addChild(mapSprite);
+
+  // Load and position the house image at the top-left corner
+  const houseTexture = await PIXI.Assets.load("./assets/house.png");
+  const houseSprite = new PIXI.Sprite(houseTexture);
+  
+  houseSprite.x = 0; // Position it at the top-left corner
+  houseSprite.y = 0;
+  houseSprite.interactive = true;
+  houseSprite.buttonMode = true;
+
+  houseSprite.scale.set(0.3, 0.3);
+  
+  // Add the house sprite to the stage
+  app.stage.addChild(houseSprite);
+  
+  // Set up the click listener for the house sprite to redirect to gallery2.html
+  houseSprite.on("pointerdown", () => {
+    window.location.href = "galleryUser.html";
+  });
+
+
   for (let i = 0; i < 5; i++) {
     // Generar posiciones aleatorias dentro de los rangos dados
     const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
