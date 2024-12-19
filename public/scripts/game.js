@@ -36,7 +36,7 @@ async function loadMap() {
     const randomX = Math.random() * (1000 - 725) + 725; // Rango de 725 a 1000
     const randomY = Math.random() * (700 - 300) + 300; // Rango de 300 a 700
   
-    const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.1, 0.1);
+    const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 1, 1);
     lienzoSprites.push(lienzoSprite);
   }
   
