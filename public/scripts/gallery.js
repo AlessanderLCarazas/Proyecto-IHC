@@ -17,10 +17,6 @@ let characterSprite; // El sprite del personaje
 
 // Cargar la galería
 async function loadGallery() {
-  const params = new URLSearchParams(window.location.search);
-  const lienzoIndex = params.get("lienzo") || "0"; // Valor por defecto si no se pasa el índice
-
-  const galleryTexturePath = `./assets/galeria${lienzoIndex}.jpg`; // Ruta de la galería
   const galleryTexture = await PIXI.Assets.load('./assets/gallery.jpg');
   const gallerySprite = new PIXI.Sprite(galleryTexture);
 
@@ -50,15 +46,15 @@ async function loadGallery() {
 
     if (Math.abs(characterBounds.x - 265 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html?image=1";
+      window.location.href = "cuadro.html?image=3";
     }
     else if (Math.abs(characterBounds.x - 520 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html?image=2";
+      window.location.href = "cuadro.html?image=1";
     }
     else if (Math.abs(characterBounds.x - 700 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html?image=3";
+      window.location.href = "cuadro.html?image=2";
     }
   });
 }
