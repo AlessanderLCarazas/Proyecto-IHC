@@ -14,6 +14,7 @@ document.body.appendChild(app.view);
 initializePixiApplication(app);
 
 let lienzoSprites = [];
+let beerSprites = [];
 let characterSprite;
 let moreSprites = [];
 
@@ -39,6 +40,15 @@ async function loadMap() {
     const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
     lienzoSprites.push(lienzoSprite);
   }
+
+  // Cargar tarros de cerveza
+  for (let i = 0; i < 5; i++) {
+    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
+    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+
+    const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
+    beerSprites.push(beerSprite); // Agregar el tarro de cerveza al arreglo
+  }
   
   characterSprite = await loadCharacter(1200, 320, 1, 1);
 
@@ -60,6 +70,25 @@ async function loadMap() {
       }
     });
     
+    // Comprobar si el personaje está cerca de un tarro de cerveza
+    beerSprites.forEach((beerSprite, index) => {
+      const beerBounds = beerSprite.getBounds();
+      if (
+        Math.abs(characterBounds.x - beerBounds.x) < tolerance &&
+        Math.abs(characterBounds.y - beerBounds.y) < tolerance
+      ) {
+        window.location.href = `taberna.html?beer=${index}`; // Redirigir a la página taberna.html
+      }
+    });
+    
+
+    const beerBounds = beerSprites[0].getBounds();
+    console.log(characterBounds);
+    console.log(beerBounds);
+    if (Math.abs(characterBounds.x - beerBounds.x) < tolerance &&
+        Math.abs(characterBounds.y - beerBounds.y) < tolerance) {
+        window.location.href = "gallery.html";
+    }
 
     const lienzoBounds = lienzoSprites[0].getBounds();
     console.log(characterBounds);
