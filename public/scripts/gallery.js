@@ -39,7 +39,7 @@ async function loadGallery() {
   // Set up key controls for the character
   setupKeyControls();
 
-  // Add the ticker logic for detecting interactions
+   // Add the ticker logic for detecting interactions
   setupLocationDetection();
 }
 

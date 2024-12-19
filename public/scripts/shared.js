@@ -3,6 +3,7 @@ let characterSprite; // Sprite del personaje
 let sprite;
 let isImageMoving = false; // Variable para controlar si una imagen se está moviendo
 let isCharacterMoving = false; // Variable para controlar si el personaje se está moviendo
+let isCarretaMoving = false;
 
 // Inicializa la instancia de la aplicación PIXI
 function initializePixiApplication(pixiApp) {
@@ -148,6 +149,29 @@ function loadImagePositions() {
   return JSON.parse(localStorage.getItem('imagePositions')) || [];
 }
 
+function moveCarrete(carreteSprite, targetX, targetY) {
+  const speed = 5;
+  isCarretaMoving = true; // Marcar que el personaje se está moviendo
+
+  app.ticker.add(function animate() {
+    const dx = targetX - carreteSprite.x;
+    const dy = targetY - carreteSprite.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < speed) {
+      carreteSprite.x = targetX;
+      carreteSprite.y = targetY;
+      app.ticker.remove(animate);
+      isCarretaMoving = false; // El movimiento del personaje ha terminado
+    }
+
+    const angle = Math.atan2(dy, dx);
+    carreteSprite.x += Math.cos(angle) * speed;
+    carreteSprite.y += Math.sin(angle) * speed;
+  });
+  return carreteSprite;
+
+}
 
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete };
