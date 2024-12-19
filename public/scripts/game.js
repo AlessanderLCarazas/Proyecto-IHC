@@ -31,20 +31,16 @@ async function loadMap() {
   const tolerance = 30;
 
   app.stage.addChild(mapSprite);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     // Generar posiciones aleatorias dentro de los rangos dados
-    const randomX = Math.random() * (1000 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (700 - 300) + 300; // Rango de 300 a 700
+    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
+    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
   
-    const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 1, 1);
+    const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
     lienzoSprites.push(lienzoSprite);
   }
   
-
-  const lienzoSprite = await loadLienzo();
-  lienzoSprites.push(lienzoSprite);
-
-  characterSprite = await loadCharacter(100, 100, 0.4, 0.4);
+  characterSprite = await loadCharacter(1200, 320, 1, 1);
 
   mapSprite.on("pointerdown", (event) => {
     const position = event.data.global;

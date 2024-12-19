@@ -50,15 +50,15 @@ async function loadGallery() {
 
     if (Math.abs(characterBounds.x - 265 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html";
+      window.location.href = "cuadro.html?image=1";
     }
     else if (Math.abs(characterBounds.x - 520 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html";
+      window.location.href = "cuadro.html?image=2";
     }
     else if (Math.abs(characterBounds.x - 700 * scaleX) < tolerance &&
       Math.abs(characterBounds.y - 600 * scaleY) < tolerance) {
-      window.location.href = "cuadro.html";
+      window.location.href = "cuadro.html?image=3";
     }
   });
 }

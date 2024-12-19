@@ -2,264 +2,543 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cuadro de arte</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LovArtGame</title>
 
-  <!-- update the version number as needed -->
-  <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/11.0.2/firebase-performance-compat.js"></script>
-  <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-  <script src="https://pixijs.download/v7.1.1/pixi.min.js"></script>
-  <style>
-    /* Estilos generales */
-    body {
-      background-color: #f4f0d2;
-      font-family: 'Georgia', serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <!-- Firebase Scripts -->
+    <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    .container {
-      display: grid;
-      grid-template-columns: 30% 40% 30%;
-      max-width: 1200px;
-      margin: 20px;
-      padding: 20px;
-      background-color: #fff8e1;
-      border-radius: 10px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    }
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+            flex-wrap: wrap;
+            /* Permite que los elementos se ajusten en pantallas más pequeñas */
+        }
 
-    /* Estilo izquierdo (Artista) */
-    .left-column {
-      padding: 20px;
-      border-right: 2px solid #8b5f3d;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .left,
+        .right {
+            position: relative;
+            transform: translateY(12%);
+            width: 28%;
+            padding: 5px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+        }
 
-    .artist-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background-image: url('path/to/artist-photo.jpg');
-      background-size: cover;
-      margin-bottom: 20px;
-    }
+        .right {
+            margin-top: 10%;
+        }
 
-    .artist-name {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #8b5f3d;
-    }
+        .center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
 
-    .artist-awards {
-      margin-top: 10px;
-      color: #6b4f32;
-      font-style: italic;
-    }
+        .center img {
+            max-width: 100%;
+            max-height: 100%;
+        }
 
-    .heart-button {
-      background-color: #e74c3c;
-      border: none;
-      padding: 10px;
-      color: white;
-      font-size: 1.2em;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+        #image-upload,
+        #load-more {
+            position: absolute;
+            z-index: 2;
+        }
 
-    .share-button {
-      background-color: #3498db;
-      border: none;
-      padding: 10px;
-      color: white;
-      font-size: 1.2em;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+        #image-upload {
+            top: 10px;
+            left: 10px;
+        }
 
-    .badge {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2em;
-      background-color: #f4e1b2;
-      padding: 10px;
-      border-radius: 5px;
-      color: #3e3c2b;
-    }
+        #load-more {
+            top: 10px;
+            left: 100px;
+        }
 
-    /* Estilo central (Cuadro de Arte) */
-    .center-column {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('assets/VISTACUADRO.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            /* Asegura que la imagen de fondo cubra toda la pantalla */
+        }
 
-    .painting-image {
-      max-width: 100%;
-      max-height: 400px;
-      border: 5px solid #8b5f3d;
-      border-radius: 10px;
-    }
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
 
-    .badge {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2em;
-      background-color: #f4e1b2;
-      padding: 10px;
-      border-radius: 5px;
-      color: #3e3c2b;
-    }
+        .user-image {
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-    /* Estilo derecho (Comentarios) */
-    .right-column {
-      padding: 20px;
-      border-left: 2px solid #8b5f3d;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        .user-name {
+            font-size: 1.2em;
+            background-color: rgb(211, 211, 211);
+            font-weight: bold;
+        }
 
-    .comments-section {
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
+        .artist-achievements {
+            margin-top: 40px;
+        }
 
-    .comment {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
+        .artist-achievements h4 {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
 
-    .comment-photo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: transparent;
-      margin-right: 15px;
-    }
+        .achievement {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
 
-    .comment-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    }
+        .achievement-icon {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
 
-    .comment-text {
-      font-size: 1.1em;
-      color: #4b2e1e;
-    }
+        .achievement-content {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .comment-author {
-      font-weight: bold;
-      color: #8b5f3d;
-    }
+        .achievement-title {
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-    .comment-form {
-      display: flex;
-      margin-top: 20px;
-      border-top: 2px solid #8b5f3d;
-      padding-top: 20px;
-    }
+        .achievement-description {
+            font-size: 0.9em;
+            color: #555;
+        }
 
-    .comment-input {
-      flex: 1;
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      border: 2px solid #8b5f3d;
-      margin-right: 10px;
-    }
+        .comments-section {
+            max-height: 500px;
+            overflow-y: auto;
+        }
 
-    .submit-comment {
-      background-color: #8b5f3d;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1.1em;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+        .user-comments {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+
+        }
+
+        .comment {
+            background-color: antiquewhite;
+        }
+
+        .comment-content .commenter-name {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .comment-content .comment-text {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Media Queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                /* Cambia la disposición a columna */
+                height: auto;
+                /* Deja que el contenedor se ajuste a la altura de su contenido */
+            }
+
+            .left,
+            .right {
+                width: 100%;
+                /* Hace que cada columna ocupe todo el ancho */
+                margin: 10px 0;
+            }
+
+            .user-image {
+                width: 30%;
+                /* Ajusta el tamaño de la imagen de perfil en pantallas pequeñas */
+                height: 30%;
+            }
+
+            .user-name {
+                font-size: 1em;
+                /* Ajusta el tamaño del nombre */
+            }
+
+            .achievement-title {
+                font-size: 0.9em;
+                /* Ajusta el tamaño del título del logro */
+            }
+
+            .achievement-description {
+                font-size: 0.8em;
+                /* Ajusta el tamaño de la descripción del logro */
+            }
+
+            .commenter-name {
+                font-size: 0.9em;
+                /* Ajusta el tamaño del nombre del comentarista */
+            }
+
+            .comment-text {
+                font-size: 0.8em;
+                /* Ajusta el tamaño del comentario */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .user-image {
+                width: 40%;
+                height: 40%;
+            }
+
+            .user-name {
+                font-size: 0.9em;
+            }
+
+            .achievement-title,
+            .achievement-description {
+                font-size: 0.8em;
+            }
+
+            .commenter-name,
+            .comment-text {
+                font-size: 0.8em;
+            }
+
+            .center img {
+                width: 90%;
+            }
+        }
+
+
+        .buttons-section,
+        .recommend-section {
+            margin-top: 20px;
+            /* Espacio entre los botones y la imagen */
+        }
+
+        .buttons-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* Espacio entre los botones */
+            margin-top: 20px;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: aliceblue;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="button"],
+        .button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="button"]:hover,
+        .button:hover {
+            background: linear-gradient(135deg, #4a59e1, #6e7dff);
+            transform: translateY(-3px);
+            /* Efecto de elevación */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="button"]:focus,
+        .button:focus {
+            outline: none;
+            border: 2px solid #ff4081;
+            /* Color de borde al enfocar */
+        }
+
+        input[type="button"] {
+            background: #e8e8e8;
+            color: #333;
+            font-weight: bold;
+            border: 2px solid #ddd;
+        }
+
+        input[type="button"]:hover {
+            background: #d4d4d4;
+        }
+
+        input[type="button"]:focus {
+            border-color: #4a59e1;
+        }
+
+        .comment-form {
+            display: flex;
+            margin-top: 20px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comment-form input {
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .comment-form button {
+            padding: 10px 20px;
+            background-color: #4a59e1;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background-color: #6e7dff;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <!-- Panel izquierdo (Artista) -->
-    <div class="left-column">
-      <div class="artist-photo">
-        <img src="./assets/character.png" alt="">
-      </div>
-      <div class="artist-name">Grand Artista NombreX</div>
-      <div class="artist-awards">Premios: Premio 1, Premio 2, Premio 3</div>
-      <button class="heart-button">❤️ 0</button>
-      <button class="share-button">Compartir</button>
-      <div class="badge">
-        Insignia: Mejor Artista de la Galería
-      </div>
-    </div>
+    <!-- Layout Divisions -->
+    <div class="container">
+        <div class="left">
+            <div class="user-profile">
+                <img src="assets/antenita.png" alt="User Image" class="user-image">
+                <div class="user-name">
+                    <h3>Antenita_Artist</h3>
+                </div>
+            </div>
+            <!-- Image Gallery -->
+            <!-- Logros del artista -->
+            <div class="artist-achievements" id="artist-achievements">
+                <h4>Logros del Artista:</h4>
+                <div class="achievement">
+                    <img src="assets/emblem3.png" alt="Icon" class="achievement-icon">
+                    <div class="achievement-content">
+                        <h5 class="achievement-title">Gano La Guerra de los ancestros</h5>
+                        <p class="achievement-description">Este logro reconoce su destreza en la batalla más épica de la
+                            historia.</p>
+                    </div>
+                </div>
+                <div class="achievement">
+                    <img src="assets/emblem2.png" alt="Icon" class="achievement-icon">
+                    <div class="achievement-content">
+                        <h5 class="achievement-title">No hizo nada</h5>
+                        <p class="achievement-description">A pesar de su aparente inactividad, dejó una huella
+                            imborrable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <!-- Imagen cargada aparecerá aquí -->
+            <img id="display-image" src="assets/default-image.jpg" alt="Imagen cargada">
 
-    <!-- Panel central (Cuadro de Arte) -->
-    <div class="center-column">
-      <img class="painting-image" src="./assets/lienzo.png" alt="Cuadro medieval" />
-      <div class="badge">
-        Insignia: Mejor Pintura de la Galería
-      </div>
-    </div>
+            <!-- Primera sección: Botones de Like y Compartir -->
+            <div class="buttons-section">
+                <input type="button" id="like-count" value="20">
+                <button id="like-button" class="button">Like</button>
+                <input type="button" id="share-count" value="20">
+                <button id="share-button" class="button">Compartir</button>
+            </div>
 
-    <!-- Panel derecho (Comentarios) -->
-    <div class="right-column">
-      <div class="comments-section">
-        <div class="comment">
-          <div class="comment-photo">
-            <img src="assets/caballete.png" alt="Comentador" />
-          </div>
-          <div>
-            <div class="comment-author">Comentador 1</div>
-            <div class="comment-text">¡Este cuadro es impresionante!</div>
-          </div>
+            <!-- Segunda sección: Botón de Recomendar Artista -->
+            <div class="recommend-section">
+                <button id="recommend-artist-button" class="button">Recomendar Artista</button>
+            </div>
         </div>
 
-        <div class="comment">
-          <div class="comment-photo">
-            <img src="assets/caballete.png" alt="Comentador" />
-          </div>
-          <div>
-            <div class="comment-author">Comentador 2</div>
-            <div class="comment-text">Me encanta el estilo medieval.</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="comment-form">
-        <input type="text" class="comment-input" placeholder="Escribe tu comentario..." />
-        <button class="submit-comment">Comentar</button>
-      </div>
+        <div class="right">
+            <!-- Lateral derecha -->
+            <div class="comments-section" id="comments-section">
+                <div class="user-comments">
+                    <div class="comment">
+                        <img src="assets/profile1.jpg" alt="User Image" class="profile-image">
+                        <div class="comment-content">
+                            <h5 class="commenter-name">LittleSavage_Flandre</h5>
+                            <p class="comment-text">Antenita me cae bien aunque dibuje bien culero</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <img src="assets/profile5.jpg" alt="User Image" class="profile-image">
+                        <div class="comment-content">
+                            <h5 class="commenter-name">ShamikoArt</h5>
+                            <p class="comment-text">Momo se que estas leyendo esto dejame ver a los niños</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Campo para agregar un comentario -->
+            <div class="comment-form">
+                <input type="text" id="comment-input" placeholder="Escribe tu comentario..." />
+                <button id="comment-button">Comentar</button>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <script>
+        // Obtener parámetros de la URL
+        // Obtener el parámetro 'image' de la URL
+        const params = new URLSearchParams(window.location.search);
+        const imageUrl = params.get('image');
+
+        // Lógica para cargar la imagen dependiendo del parámetro 'image'
+        if (imageUrl) {
+            const displayImage = document.getElementById('display-image');
+            const imageNumber = parseInt(imageUrl, 10); // Convertir el parámetro 'image' a un número entero
+
+            // Comprobar si el número de imagen es válido
+            if (imageNumber >= 1 && imageNumber <= 10) {
+                // Generar la ruta de la imagen de manera dinámica
+                displayImage.src = `assets/DIBUJO${imageNumber}.png`;
+            } else {
+                // Si el número de imagen no es válido, se puede asignar una imagen por defecto
+                displayImage.src = 'assets/default-image.jpg';
+            }
+        }
+
+
+        // Cargar una imagen desde el input
+        const imageInput = document.getElementById('image-upload');
+        const loadMoreButton = document.getElementById('load-more');
+        const displayImage = document.getElementById('display-image');
+
+        loadMoreButton.addEventListener('click', () => {
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    displayImage.src = e.target.result;
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+        });
+    </script>
+
+    <script>
+        // Obtener los elementos de los botones e inputs
+        const likeButton = document.getElementById('like-button');
+        const shareButton = document.getElementById('share-button');
+        const likeCount = document.getElementById('like-count');
+        const shareCount = document.getElementById('share-count');
+
+        // Función para aumentar el contador de "Like"
+        likeButton.addEventListener('click', function () {
+            let currentCount = parseInt(likeCount.value);
+            likeCount.value = currentCount + 1;  // Incrementa el valor del input de like
+        });
+
+        // Función para aumentar el contador de "Compartir"
+        shareButton.addEventListener('click', function () {
+            let currentCount = parseInt(shareCount.value);
+            shareCount.value = currentCount + 1;  // Incrementa el valor del input de compartir
+        });
+
+    </script>
+    <script>
+        // Obtener los elementos necesarios
+        const commentInput = document.getElementById('comment-input');
+        const commentButton = document.getElementById('comment-button');
+        const commentsSection = document.getElementById('comments-section');
+
+        // Función para agregar un nuevo comentario
+        commentButton.addEventListener('click', function () {
+            const commentText = commentInput.value.trim();  // Obtener el texto del comentario
+
+            // Verificar que el campo de texto no esté vacío
+            if (commentText !== "") {
+                // Crear el nuevo comentario
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+
+                // Crear la imagen de perfil y el contenido del comentario
+                const profileImage = document.createElement('img');
+                profileImage.src = 'assets/current_user.jpg';  // Imagen del usuario actual
+                profileImage.alt = 'User Image';
+                profileImage.classList.add('profile-image');
+
+                const commentContent = document.createElement('div');
+                commentContent.classList.add('comment-content');
+
+                const commenterName = document.createElement('h5');
+                commenterName.classList.add('commenter-name');
+                commenterName.textContent = 'AnotherNormalArtist';  // Nombre del comentarista
+
+                const commentTextElement = document.createElement('p');
+                commentTextElement.classList.add('comment-text');
+                commentTextElement.textContent = commentText;
+
+                // Agregar los elementos al comentario
+                commentContent.appendChild(commenterName);
+                commentContent.appendChild(commentTextElement);
+                newComment.appendChild(profileImage);
+                newComment.appendChild(commentContent);
+
+                // Agregar el nuevo comentario al final de la lista
+                commentsSection.querySelector('.user-comments').appendChild(newComment);
+
+                // Limpiar el campo de texto
+                commentInput.value = "";
+            } else {
+                alert("Por favor, escribe un comentario.");
+            }
+        });
+
+    </script>
 </body>
 
 </html>
