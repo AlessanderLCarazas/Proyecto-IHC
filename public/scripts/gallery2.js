@@ -1,9 +1,10 @@
-import { 
-  initializePixiApplication, 
-  loadCharacter, 
-  loadSomethingInteractive, 
-  saveImagePosition, 
-  loadImagePositions 
+import {
+  initializePixiApplication,
+  loadCharacter,
+  loadSomethingInteractive,
+  loadSomething,
+  saveImagePosition,
+  loadImagePositions
 } from './shared.js';
 
 const app = new PIXI.Application({
@@ -20,12 +21,18 @@ document.body.appendChild(app.view);
 initializePixiApplication(app);
 
 let characterSprite; // The character sprite
+let defaultsSprites = [];
 const speed = 10; // Movement speed
 const tolerance = 25; // Distance tolerance for detecting locations
 
+//DRAGGIND IMAGES
+
+let draggedSprite = null; // Sprite que se está arrastrando
+let dragging = false; // Bandera para evitar conflictos con otros movimientos
+
 // Load the gallery
 async function loadGallery() {
-  const galleryTexture = await PIXI.Assets.load('./assets/gallery.jpg');
+  const galleryTexture = await PIXI.Assets.load('./assets/GALERIA2ONLYESTANDARTES.png');
   const gallerySprite = new PIXI.Sprite(galleryTexture);
 
   gallerySprite.width = app.screen.width;
@@ -34,10 +41,23 @@ async function loadGallery() {
   app.stage.addChild(gallerySprite);
 
   // Load the character
-  characterSprite = await loadCharacter(600, 450, 1, 1);
 
+  let element = await loadSomething('./assets/DIBUJO4.png', 100, 300, 1, 1);
+  defaultsSprites.push(element)
+
+  element = await loadSomething('./assets/DIBUJO5.png', 300, 330, 1, 1);
+  defaultsSprites.push(element)
+
+  element = await loadSomething('./assets/PALOMITA.png', 1500, 600, 1.5, 1.5);
+  defaultsSprites.push(element)
+
+  element = await loadSomething('./assets/emblem5.png', 1750, 400, 1, 1);
+  defaultsSprites.push(element)
+
+  characterSprite = await loadCharacter(600, 600, 2, 2);
   // Set up key controls for the character
   setupKeyControls();
+  setupDragging();
 
   // Add the ticker logic for detecting interactions
   setupLocationDetection();
@@ -81,13 +101,11 @@ document.getElementById("image-upload").addEventListener("change", (event) => {
 
       newImage.on("pointerdown", (event) => {
         const position = event.data.global;
-        saveImagePosition(file.name, position.x, position.y); // Save its position
+        //saveImagePosition(file.name, position.x, position.y); // Save its position
       });
-
-      // Add the new image to the stage
-      app.stage.addChild(newImage);
+      defaultsSprites.push(newImage);
+      setupDragging();
     };
-
     reader.readAsDataURL(file); // Read the image file as a base64 string
   }
 });
@@ -126,8 +144,8 @@ function setupKeyControls() {
 
 // Add location detection logic
 function setupLocationDetection() {
-  const scaleX = app.screen.width / 1920;
-  const scaleY = app.screen.height / 1080;
+  const cuadro1Bounds = defaultsSprites[0].getBounds();
+  const cuadro2Bounds = defaultsSprites[1].getBounds();
 
   app.ticker.add(() => {
     if (!characterSprite) return;
@@ -136,21 +154,49 @@ function setupLocationDetection() {
 
     // Check if the character is near specific locations
     if (
-      Math.abs(characterBounds.x - 265 * scaleX) < tolerance &&
-      Math.abs(characterBounds.y - 600 * scaleY) < tolerance
+      Math.abs(characterBounds.x - cuadro1Bounds.x) < tolerance &&
+      Math.abs(characterBounds.y - cuadro1Bounds.y) < tolerance
     ) {
-      window.location.href = "cuadro.html?image=3";
+      window.location.href = "cuadro.html?image=4";
     } else if (
-      Math.abs(characterBounds.x - 520 * scaleX) < tolerance &&
-      Math.abs(characterBounds.y - 600 * scaleY) < tolerance
+      Math.abs(characterBounds.x - cuadro2Bounds.x) < tolerance &&
+      Math.abs(characterBounds.y - cuadro2Bounds.y) < tolerance
     ) {
-      window.location.href = "cuadro.html?image=1";
-    } else if (
-      Math.abs(characterBounds.x - 700 * scaleX) < tolerance &&
-      Math.abs(characterBounds.y - 600 * scaleY) < tolerance
-    ) {
-      window.location.href = "cuadro.html?image=2";
+      window.location.href = "cuadro.html?image=5";
     }
+  });
+}
+
+function setupDragging() {
+  defaultsSprites.forEach((sprite) => {
+    sprite.interactive = true;
+    sprite.buttonMode = true;
+    sprite.dragging = false;
+
+    let dragData = null;
+
+    // Al hacer clic, comienza a arrastrar
+    sprite.on("pointerdown", (event) => {
+      sprite.dragging = true;
+      sprite.alpha = 0.8; // Reducir la opacidad para indicar que está siendo arrastrado
+      dragData = event.data; // Guardar datos del evento (incluye posición)
+    });
+    sprite.on('pointerup', () => {
+      sprite.dragging = false; // Desactivar arrastre
+      sprite.alpha = 1; // Restaurar la opacidad
+      dragData = null; // Limpiar datos de arrastre
+    });
+    sprite.on('pointerupoutside', () => {
+      sprite.dragging = false; // Desactivar arrastre si se suelta fuera
+      sprite.alpha = 1; // Restaurar la opacidad
+      dragData = null; // Limpiar datos de arrastre
+    });
+    app.ticker.add(() => {
+      if (sprite.dragging && dragData) {
+        sprite.x = dragData.x;
+        sprite.y = dragData.y;
+      }
+    });
   });
 }
 

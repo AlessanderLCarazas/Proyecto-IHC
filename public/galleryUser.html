@@ -33,14 +33,49 @@
       z-index: 1;
       /* Asegura que el lienzo esté por encima de otros elementos */
     }
+
+    .styled-button {
+      position: absolute;
+      left: 10px;
+      z-index: 2;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #6a0dad, #b565f7);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .styled-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .styled-button:active {
+      transform: scale(0.98);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ajusta la posición específica de cada botón */
+    label[for="image-upload"] {
+      top: 50px;
+    }
+
+    #load-more {
+      top: 10px;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Botón de subida de imágenes -->
-  <input type="file" id="image-upload" style="position: absolute; top: 50px; left: 10px; z-index: 2;" />
-  <button id="load-more" style="position: absolute; top: 10px; left: 10px; z-index: 2;">Cargar imagen</button>
-  <script type="module" src="./scripts/gallery.js"></script>
+  <input type="file" id="image-upload" style="display: none;" />
+  <label for="image-upload" class="styled-button">Subir Imagen</label>
+  <button id="load-more" class="styled-button">Cargar Imagen</button>
+  <script type="module" src="./scripts/gallery2.js"></script>
 </body>
 
 </html>

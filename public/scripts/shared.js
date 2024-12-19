@@ -94,35 +94,6 @@ async function loadSomethingInteractive(directionTexture, targetX, targetY, scal
   sprite.interactive = true;
   sprite.buttonMode = true;
 
-  // Función de mover la imagen (para arrastrar)
-  sprite.on("pointerdown", (event) => {
-    if (!isCharacterMoving) { // Solo permitir mover la imagen si el personaje no se está moviendo
-      isImageMoving = true;  // Marcar que una imagen está en movimiento
-      sprite.data = event.data;
-      sprite.dragging = true;
-    }
-  });
-
-  sprite.on("pointermove", () => {
-    if (sprite.dragging) {
-      const newPosition = sprite.data.getLocalPosition(sprite.parent);
-      sprite.x = newPosition.x;
-      sprite.y = newPosition.y;
-    }
-  });
-
-  sprite.on("pointerup", () => {
-    sprite.dragging = false;
-    sprite.data = null;
-    isImageMoving = false;  // Desmarcar el movimiento de la imagen
-  });
-
-  sprite.on("pointerupoutside", () => {
-    sprite.dragging = false;
-    sprite.data = null;
-    isImageMoving = false;  // Desmarcar el movimiento de la imagen si el ratón sale del área
-  });
-
   app.stage.addChild(sprite);
 
   return sprite;

@@ -34,7 +34,7 @@ async function loadGallery() {
   app.stage.addChild(gallerySprite);
 
   // Load the character
-  characterSprite = await loadCharacter(600, 450, 1, 1);
+  characterSprite = await loadCharacter(300, 800, 2, 2);
 
   // Set up key controls for the character
   setupKeyControls();
@@ -64,33 +64,6 @@ function loadSavedImages() {
   });
 }
 
-// Handle new image uploads
-document.getElementById("image-upload").addEventListener("change", (event) => {
-  const file = event.target.files[0];
-
-  if (file) {
-    const reader = new FileReader();
-
-    reader.onload = async (e) => {
-      const base64Image = e.target.result; // The base64 string of the uploaded image
-      const newImage = await loadSomethingInteractive(base64Image, 600, 450, 0.5, 0.5);
-
-      // Make the new image draggable
-      newImage.interactive = true;
-      newImage.buttonMode = true;
-
-      newImage.on("pointerdown", (event) => {
-        const position = event.data.global;
-        saveImagePosition(file.name, position.x, position.y); // Save its position
-      });
-
-      // Add the new image to the stage
-      app.stage.addChild(newImage);
-    };
-
-    reader.readAsDataURL(file); // Read the image file as a base64 string
-  }
-});
 
 // Add movement controls (arrows and WASD)
 function setupKeyControls() {
