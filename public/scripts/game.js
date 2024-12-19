@@ -14,8 +14,15 @@ document.body.appendChild(app.view);
 initializePixiApplication(app);
 
 let lienzoSprites = [];
+
+//SPRITES USING
+
 let characterSprite;
 let carreteSprite; // Sprite de la carreta
+let myownHouseSprite;
+
+//SOME DIFFERENT VARIABLES
+
 const tolerance = 30;
 let lastCarreteMoveTime = 0;
 const moveInterval = 30000;
@@ -45,6 +52,7 @@ async function loadMap() {
 
   carreteSprite = await loadSomething("./assets/carreta1.png", 200, 200, 0.4, 0.4);
   characterSprite = await loadCharacter(1200, 320, 1, 1);
+  myownHouseSprite = await loadSomething("./assets/profile4.jpg", 1000, 600, 0.1, 0.1);
 
   mapSprite.on("pointerdown", (event) => {
     const position = event.data.global;
@@ -55,6 +63,7 @@ async function loadMap() {
     const currentTime = Date.now();
     const characterBounds = characterSprite.getBounds();
     const carretaBounds = carreteSprite.getBounds();
+    const myownHouseSpriteBounds = myownHouseSprite.getBounds();
 
     lienzoSprites.forEach((lienzoSprite, index) => {
       const lienzoBounds = lienzoSprite.getBounds();
@@ -77,6 +86,11 @@ async function loadMap() {
     if (Math.abs(characterBounds.x - carretaBounds.x) < tolerance &&
       Math.abs(characterBounds.y - carretaBounds.y) < tolerance) {
       window.location.href = "tienda.html";
+    }
+
+    if (Math.abs(characterBounds.x - myownHouseSpriteBounds.x) < tolerance &&
+      Math.abs(characterBounds.y - myownHouseSpriteBounds.y) < tolerance) {
+      window.location.href = "owngallery.html";
     }
 
     if (currentTime - lastCarreteMoveTime >= moveInterval) {
