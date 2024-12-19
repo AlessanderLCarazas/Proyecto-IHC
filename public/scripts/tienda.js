@@ -1,4 +1,5 @@
-import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, moveCarrete} from "./shared.js";
+import { initializePixiApplication, loadSomething } from "./shared.js";
+
 // Crear una aplicación PIXI
 const app = new PIXI.Application({
   width: window.innerWidth,
@@ -16,26 +17,43 @@ initializePixiApplication(app); // Inicializa la aplicación de PixiJS
 let dibujo1Sprite;
 let dibujo2Sprite;
 let dibujo3Sprite;
-let characterSprite;
 
 // Cargar el lienzo de la tienda de arte
 async function loadTienda() {
   const texture = await PIXI.Assets.load("./assets/TIENDADEARTEcanvas3.png");
   const sprite = new PIXI.Sprite(texture);
 
-  sprite.width = app.screen.width;  // Ajustar el ancho al de la pantalla
-  sprite.height = app.screen.height;  // Ajustar el alto al de la pantalla
+  sprite.width = app.screen.width; // Ajustar el ancho al de la pantalla
+  sprite.height = app.screen.height; // Ajustar el alto al de la pantalla
 
   app.stage.addChild(sprite); // Añadir el lienzo de fondo al escenario
 
-  // Cargar los tres dibujos y ubicarlos en la parte inferior con margen
+  // Cargar los tres dibujos con sus posiciones fijas y tamaños ajustados
   dibujo1Sprite = await loadSomething("./assets/DIBUJO1.png", 200, 300, 0.3, 0.3);
-
   dibujo2Sprite = await loadSomething("./assets/DIBUJO2.png", 1600, 300, 0.3, 0.3);
-
   dibujo3Sprite = await loadSomething("./assets/DIBUJO3.png", 500, 800, 0.3, 0.3);
 
-  // Añadir los tres dibujos al escenario
+  // Hacer que los dibujos sean interactivos y añadir funcionalidad al hacer clic
+  dibujo1Sprite.interactive = true; // Hacer interactivo
+  dibujo1Sprite.buttonMode = true; // Mostrar el cursor como un botón
+  dibujo1Sprite.on("pointerdown", () => {
+    window.location.href = "cuadroo.html?id=cuadroo1"; // Redirigir a la página de detalles del DIBUJO1
+  });
+  app.stage.addChild(dibujo1Sprite); // Añadir al escenario
+
+  dibujo2Sprite.interactive = true; // Hacer interactivo
+  dibujo2Sprite.buttonMode = true; // Mostrar el cursor como un botón
+  dibujo2Sprite.on("pointerdown", () => {
+    window.location.href = "cuadroo.html?id=cuadroo2"; // Redirigir a la página de detalles del DIBUJO2
+  });
+  app.stage.addChild(dibujo2Sprite); // Añadir al escenario
+
+  dibujo3Sprite.interactive = true; // Hacer interactivo
+  dibujo3Sprite.buttonMode = true; // Mostrar el cursor como un botón
+  dibujo3Sprite.on("pointerdown", () => {
+    window.location.href = "cuadroo.html?id=cuadroo3"; // Redirigir a la página de detalles del DIBUJO3
+  });
+  app.stage.addChild(dibujo3Sprite); // Añadir al escenario
 }
 
 // Inicializar la tienda
