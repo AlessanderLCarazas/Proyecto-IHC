@@ -47,7 +47,7 @@ async function loadTaberna() {
   // Crear cuadro semitransparente
   const transparentBox = new PIXI.Graphics();
   transparentBox.beginFill(0x000000, 0.1); // Color negro con opacidad 0.3
-  transparentBox.drawRect(2150, 69, 250, 420); // Tamaño y posición
+  transparentBox.drawRect(1200, 40, 150, 340); // Tamaño y posición
   transparentBox.endFill();
 
   transparentBox.interactive = true;
@@ -72,7 +72,7 @@ async function loadTaberna() {
 
 
   // Cargar el personaje
-  characterSprite = await loadCharacter(100, 100, 0.4, 0.4);
+  characterSprite = await loadCharacter(700, 700, 2.5, 2.5);
 
   
 
@@ -97,7 +97,7 @@ async function addLoreMaster() {
     LoreMasterSprite.x = app.screen.width * 0.4; // Posición en X
     LoreMasterSprite.y = app.screen.height * 0.55; // Posición en Y
     LoreMasterSprite.anchor.set(0.5, 0.5);
-    LoreMasterSprite.scale.set(2, 2);
+    LoreMasterSprite.scale.set(1, 1);
 
     app.stage.addChild(LoreMasterSprite);
 
@@ -111,7 +111,7 @@ async function addGrunt() {
     GruntSprite.x = app.screen.width * 0.1; // Posición en X
     GruntSprite.y = app.screen.height * 0.55; // Posición en Y
     GruntSprite.anchor.set(0.5, 0.5);
-    GruntSprite.scale.set(2, 2);
+    GruntSprite.scale.set(1, 1);
 
     app.stage.addChild(GruntSprite);
 
@@ -125,7 +125,7 @@ async function addnewbie2() {
   newbie2Sprite.x = app.screen.width * 0.6; // Posición en X
   newbie2Sprite.y = app.screen.height * 0.65; // Posición en Y
   newbie2Sprite.anchor.set(0.5, 0.5);
-  newbie2Sprite.scale.set(1.3, 1.3);
+  newbie2Sprite.scale.set(0.7, 0.7);
 
   app.stage.addChild(newbie2Sprite);
 
@@ -139,7 +139,7 @@ async function addantenita2() {
   antenita2Sprite.x = app.screen.width * 0.8; // Posición en X
   antenita2Sprite.y = app.screen.height * 0.67; // Posición en Y
   antenita2Sprite.anchor.set(0.5, 0.5);
-  antenita2Sprite.scale.set(1.3, 1.3);
+  antenita2Sprite.scale.set(0.7, 0.7);
 
   app.stage.addChild(antenita2Sprite);
 
@@ -151,9 +151,9 @@ async function addGUILDMASTER() {
   const GUILDMASTERSprite = new PIXI.Sprite(GUILDMASTERTexture);
 
   GUILDMASTERSprite.x = app.screen.width * 0.7; // Posición en X
-  GUILDMASTERSprite.y = app.screen.height * 0.3; // Posición en Y
+  GUILDMASTERSprite.y = app.screen.height * 0.40; // Posición en Y
   GUILDMASTERSprite.anchor.set(0.5, 0.5);
-  GUILDMASTERSprite.scale.set(1.4, 1.4);
+  GUILDMASTERSprite.scale.set(0.6, 0.6);
 
   app.stage.addChild(GUILDMASTERSprite);
 

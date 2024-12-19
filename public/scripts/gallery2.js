@@ -42,16 +42,16 @@ async function loadGallery() {
 
   // Load the character
 
-  let element = await loadSomething('./assets/DIBUJO4.png', 100, 300, 1, 1);
+  let element = await loadSomething('./assets/DIBUJO4.png', 100, 300, 0.7, 0.7);
   defaultsSprites.push(element)
 
-  element = await loadSomething('./assets/DIBUJO5.png', 300, 330, 1, 1);
+  element = await loadSomething('./assets/DIBUJO5.png', 300, 330, 0.7, 0.7);
   defaultsSprites.push(element)
 
-  element = await loadSomething('./assets/PALOMITA.png', 1500, 600, 1.5, 1.5);
+  element = await loadSomething('./assets/PALOMITA.png', 1500, 600, 1, 1);
   defaultsSprites.push(element)
 
-  element = await loadSomething('./assets/emblem5.png', 1750, 400, 1, 1);
+  element = await loadSomething('./assets/emblem5.png', 1750, 400, 0.6, 0.6);
   defaultsSprites.push(element)
 
   characterSprite = await loadCharacter(600, 600, 2, 2);
