@@ -1,4 +1,4 @@
-import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, moveCarrete} from "./shared.js";
+import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, moveCarrete, setupKeyControls} from "./shared.js";
 
 const app = new PIXI.Application({
   width: window.innerWidth,
@@ -26,7 +26,7 @@ let carreteSprite; // Sprite de la carreta
 
 const tolerance = 30;
 let lastCarreteMoveTime = 0;
-const moveInterval = 30000;
+const moveInterval = 15000;
 
 
 async function loadMap() {
@@ -42,11 +42,7 @@ async function loadMap() {
   app.stage.addChild(mapSprite);
 
   // Load and position the house image at the top-left corner
-  const houseTexture = await PIXI.Assets.load("./assets/profile4.png");
-  const houseSprite = new PIXI.Sprite(houseTexture);
-  
-  houseSprite.x = 0; // Position it at the top-left corner
-  houseSprite.y = 0;
+  const houseSprite = await loadSomething("./assets/profile4.png", 1700, 200, 0.3, 0.3);
   houseSprite.interactive = true;
   houseSprite.buttonMode = true;
 
@@ -54,6 +50,7 @@ async function loadMap() {
   
   // Add the house sprite to the stage
   app.stage.addChild(houseSprite);
+  setupKeyControls();
   
   // Set up the click listener for the house sprite to redirect to gallery2.html
   houseSprite.on("pointerdown", () => {
@@ -68,6 +65,12 @@ async function loadMap() {
 
     const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
     lienzoSprites.push(lienzoSprite);
+    lienzoSprites[i].interactive = true;
+    lienzoSprites[i].buttonMode = true;
+  
+    lienzoSprites[i].on("pointerdown", () => {
+      window.location.href = "gallery.html";
+    });
   }
 
   // Cargar tarros de cerveza
@@ -83,10 +86,7 @@ async function loadMap() {
   carreteSprite = await loadSomething("./assets/carreta1.png", 200, 200, 0.4, 0.4);
   characterSprite = await loadCharacter(1200, 320, 1, 1);
 
-  mapSprite.on("pointerdown", (event) => {
-    const position = event.data.global;
-    characterSprite = moveCharacterTo(position.x, position.y);
-  });
+  setupKeyControls();
 
   app.ticker.add(() => {
     const currentTime = Date.now();
@@ -138,8 +138,8 @@ async function loadMap() {
 
     if (currentTime - lastCarreteMoveTime >= moveInterval) {
       // Si ha pasado un minuto, mueve la carreta
-      const randomX = Math.floor(Math.random() * (1200 - 725)) + 725;
-      const randomY = Math.floor(Math.random() * (900 - 300)) + 300;
+      const randomX = Math.floor(Math.random() * (900 - 200)) + 200;
+      const randomY = Math.floor(Math.random() * (900 - 200)) + 200;
       carreteSprite = moveCarrete(carreteSprite, randomX, randomY);
 
       // Actualiza el tiempo de la última vez que se movió la carreta

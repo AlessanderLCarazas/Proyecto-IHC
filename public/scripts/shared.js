@@ -144,5 +144,37 @@ function moveCarrete(carreteSprite, targetX, targetY) {
 
 }
 
+// Add movement controls (arrows and WASD)
+function setupKeyControls(speed = 1) {
+  const keysPressed = {}; // Track currently pressed keys
+
+  window.addEventListener("keydown", (event) => {
+    keysPressed[event.key.toLowerCase()] = true;
+  });
+
+  window.addEventListener("keyup", (event) => {
+    keysPressed[event.key.toLowerCase()] = false;
+  });
+
+  app.ticker.add(() => {
+    if (!characterSprite) return;
+
+    let dx = 0;
+    let dy = 0;
+
+    if (keysPressed["arrowup"] || keysPressed["w"]) dy -= speed;
+    if (keysPressed["arrowdown"] || keysPressed["s"]) dy += speed;
+    if (keysPressed["arrowleft"] || keysPressed["a"]) dx -= speed;
+    if (keysPressed["arrowright"] || keysPressed["d"]) dx += speed;
+
+    characterSprite.x += dx;
+    characterSprite.y += dy;
+
+    // Ensure the character stays within bounds
+    characterSprite.x = Math.max(0, Math.min(app.screen.width, characterSprite.x));
+    characterSprite.y = Math.max(0, Math.min(app.screen.height, characterSprite.y));
+  });
+}
+
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete, setupKeyControls };
