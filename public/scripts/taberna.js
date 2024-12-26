@@ -56,7 +56,7 @@ async function loadTaberna() {
   // Crear cuadro semitransparente 2
   const transparentBox1 = new PIXI.Graphics();
   transparentBox1.beginFill(0x000000, 0.8); // Color negro con opacidad 0.3
-  transparentBox1.drawRect(1725, 420, 195, 354); // Tamaño y posición
+  transparentBox1.drawRect(1325, 320, 195, 354); // Tamaño y posición
   transparentBox1.endFill();
 
   transparentBox1.interactive = true;
@@ -105,7 +105,7 @@ async function loadEstandarteBlogs() {
   const estandarteBlogsSprite = new PIXI.Sprite(estandarteBlogsTexture);
 
   // Establecer la posición y el tamaño del estandarte
-  estandarteBlogsSprite.x = 1590; // Puedes cambiar las coordenadas X e Y a donde lo necesites
+  estandarteBlogsSprite.x = 1190; // Puedes cambiar las coordenadas X e Y a donde lo necesites
   estandarteBlogsSprite.y = -50; // Cambia la posición Y
   estandarteBlogsSprite.width = 225; // Ajusta el tamaño a tu gusto
   estandarteBlogsSprite.height = 420; // Ajusta el tamaño a tu gusto

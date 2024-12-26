@@ -51,19 +51,19 @@ async function loadGallery() {
 
   app.stage.addChild(gallerySprite);
 
-  const dibujo1 = await loadSomething('assets/DIBUJO1.png', 550, 650, 0.2, 0.2);
+  const dibujo1 = await loadSomething('assets/DIBUJO1.png', 550, 650, 0.1, 0.1);
   dibujo1.interactive = true;
   dibujo1.buttonMode = true;
-  const dibujo2 = await loadSomething('assets/DIBUJO2.png', 750, 650, 0.2, 0.2);
+  const dibujo2 = await loadSomething('assets/DIBUJO2.png', 750, 650, 0.1, 0.1);
   dibujo2.interactive = true;
   dibujo2.buttonMode = true;
-  const dibujo3 = await loadSomething('assets/DIBUJO3.png', 330, 650, 0.2, 0.2);
+  const dibujo3 = await loadSomething('assets/DIBUJO3.png', 330, 650, 0.1, 0.1);
   dibujo3.interactive = true;
   dibujo3.buttonMode = true;
-  const puerta1 = await loadSomething('assets/puerta.png', 150, 720, 1, 1);
+  const puerta1 = await loadSomething('assets/puerta.png', 150, 720, 0.6, 0.6);
   puerta1.interactive = true;
   puerta1.buttonMode = true;
-  const puerta2 = await loadSomething('assets/puerta.png', 1780, 850, 1, 1);
+  const puerta2 = await loadSomething('assets/puerta.png', 1780, 850, 0.6, 0.6);
   puerta2.interactive = true;
   puerta2.buttonMode = true;
 
@@ -71,12 +71,12 @@ async function loadGallery() {
   characterSprite = await loadCharacter(700, 800, 1, 1);
 
   // Load the portals
-  await loadPortals();
+  //await loadPortals();
   // Set up key controls for the character
   setupKeyControls();
 
    // Add the ticker logic for detecting interactions (ART GALLERY MAIN INTERACTION)
-  for (const image of galleryImages) {
+  /*for (const image of galleryImages) {
     const imageSprite = await loadSomeArt(image.file, image.x, image.y, image.width, image.height);
 
     // Image interactivity
@@ -90,7 +90,7 @@ async function loadGallery() {
 
     // Add to scenary
     app.stage.addChild(imageSprite);
-  }
+  }*/
   //setupLocationDetection();
   setupPortalDetection();
 

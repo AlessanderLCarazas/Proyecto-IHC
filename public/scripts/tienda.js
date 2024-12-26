@@ -89,8 +89,8 @@ async function loadTienda() {
   const dialogoTexture = await PIXI.Assets.load("./assets/dialogo.png");
   dialogoSprite = new PIXI.Sprite(dialogoTexture);
   
-  dialogoSprite.x = 750;  // Ajustar la posición
-  dialogoSprite.y = app.screen.height - 900; // Ajustar la posición para que quede en la parte inferior
+  dialogoSprite.x = 470;  // Ajustar la posición
+  dialogoSprite.y = app.screen.height - 750; // Ajustar la posición para que quede en la parte inferior
   
   // Reducir el tamaño de la imagen del cuadro de diálogo al 40% de su tamaño original (60% más pequeña)
   dialogoSprite.scale.set(0.4);

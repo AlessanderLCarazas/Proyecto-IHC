@@ -62,8 +62,8 @@ async function loadGallery() {
   defaultsSprites[2].on("pointerover", () => {
     // Crear la burbuja
     const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
-    bubble.x = 1000 ; // Posición de la burbuja
-    bubble.y = 1100;
+    bubble.x = 450 ; // Posición de la burbuja
+    bubble.y = 640;
     bubble.width = 200; // Ajustar tamaño de la burbuja
     bubble.height = 100;
 
@@ -112,7 +112,7 @@ function loadSavedImages() {
   const savedPositions = loadImagePositions();
 
   savedPositions.forEach(async (position) => {
-    const newImage = await loadSomethingInteractive(position.imageId, position.x, position.y, 0.5, 0.5);
+    const newImage = await loadSomethingInteractive(position.imageId, position.x, position.y, 0.4, 0.4);
 
     newImage.x = position.x;
     newImage.y = position.y;

@@ -42,7 +42,7 @@ async function loadMap() {
     app.stage.addChild(mapSprite);
 
     // Load and position the house image at the top-left corner
-    const houseSprite = await loadSomething("./assets/house.png", 900, 650, 0.7, 0.7);
+    const houseSprite = await loadSomething("./assets/house.png", 900, 650, 0.5, 0.5);
     houseSprite.interactive = true;
     houseSprite.buttonMode = true;
 
@@ -55,7 +55,7 @@ async function loadMap() {
 
 
     // Load the LIENZOs sprite
-    let lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 600, 1, 1);
+    let lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 600, 0.7, 0.7);
       lienzoSprites.push(lienzoSprite);
       lienzoSprites[0].interactive = true;
       lienzoSprites[0].buttonMode = true;
@@ -64,7 +64,7 @@ async function loadMap() {
         window.location.href = "gallery.html";
       });
 
-    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 700, 600, 1, 1);
+    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 700, 600, 0.7, 0.7);
       lienzoSprites.push(lienzoSprite);
       lienzoSprites[1].interactive = true;
       lienzoSprites[1].buttonMode = true;
@@ -73,7 +73,7 @@ async function loadMap() {
         window.location.href = "gallery.html";
       });
       
-    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 800, 1, 1);
+    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 800, 0.7, 0.7);
       lienzoSprites.push(lienzoSprite);
       lienzoSprites[2].interactive = true;
       lienzoSprites[2].buttonMode = true;
@@ -82,7 +82,7 @@ async function loadMap() {
         window.location.href = "gallery.html";
       });
     
-    let beerSprite = await loadSomething("./assets/TABERNAICON.png", 700, 800, 0.7, 0.7);
+    let beerSprite = await loadSomething("./assets/TABERNAICON.png", 700, 800, 0.5, 0.5);
 
     beerSprites.push(beerSprite);
         beerSprites[0].interactive = true;
@@ -102,7 +102,7 @@ async function loadMap() {
 
     // SECCION CARGAR CARRETA
 
-    carreteSprite = await loadSomething("./assets/carreta1.png", 800, 700, 1, 1);
+    carreteSprite = await loadSomething("./assets/carreta1.png", 800, 700, 0.6, 0.6);
     characterSprite = await loadCharacter(1200, 420, 1, 1);
 
     // Configurar los puntos de destino en el centro de la pantalla
@@ -113,10 +113,10 @@ async function loadMap() {
 
     // Generar 10 puntos en el área central
     const targetPoints = [
-        { x: 1000, y: 1100 },
-        { x: 450, y: 1000 },
-        { x: 450, y: 850 },
-        { x: 450, y: 1100 },
+        { x: 1000/2, y: 1100/2 },
+        { x: 450/2, y: 1000/2 },
+        { x: 450/2, y: 850/2 },
+        { x: 450/2, y: 1100/2 },
     ];
 
     let targetIndex = 2; // Índice del punto de destino actual

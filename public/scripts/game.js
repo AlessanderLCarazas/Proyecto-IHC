@@ -55,8 +55,8 @@ async function loadMap() {
     houseSprite.on("pointerover", () => {
         // Crear la burbuja
         const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
-        bubble.x = 1100; // Posición de la burbuja
-        bubble.y = 500;
+        bubble.x = 450; // Posición de la burbuja
+        bubble.y = 300;
         bubble.width = 200; // Ajustar tamaño de la burbuja
         bubble.height = 100;
     
@@ -108,8 +108,8 @@ async function loadMap() {
     sprite1.on("pointerover", () => {
         // Crear la burbuja
         const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
-        bubble.x = 1000; // Posición de la burbuja
-        bubble.y = 200;
+        bubble.x = 450; // Posición de la burbuja
+        bubble.y = 150;
         bubble.width = 200; // Ajustar tamaño de la burbuja
         bubble.height = 100;
     
