@@ -22,6 +22,7 @@ initializePixiApplication(app);
 
 let characterSprite; // The character sprite
 const tolerance = 25; // Distance tolerance for detecting locations
+let flechaSprite; // The back arrow sprite
 
 // Load the gallery
 async function loadGallery() {
@@ -39,8 +40,11 @@ async function loadGallery() {
   // Set up key controls for the character
   setupKeyControls();
 
-   // Add the ticker logic for detecting interactions
+  // Add the ticker logic for detecting interactions
   setupLocationDetection();
+
+  // Add the back arrow
+  await loadBackArrow();
 }
 
 // Load saved image positions
@@ -92,6 +96,30 @@ function setupLocationDetection() {
       window.location.href = "cuadro.html?image=2";
     }
   });
+}
+
+// Load the back arrow
+async function loadBackArrow() {
+  const flechaTexture = await PIXI.Assets.load('./assets/flecha.png');
+  flechaSprite = new PIXI.Sprite(flechaTexture);
+
+  flechaSprite.x = 5; // Position the arrow in the top left corner
+  flechaSprite.y = 5;
+
+  // Scale the arrow to 20% of its original size
+  flechaSprite.scale.set(0.2);
+
+  // Make the arrow interactive
+  flechaSprite.interactive = true;
+  flechaSprite.buttonMode = true;
+
+  // Add functionality to go back to the previous page
+  flechaSprite.on('pointerdown', () => {
+    window.history.back(); // Go back to the previous page
+  });
+
+  // Add the back arrow to the stage
+  app.stage.addChild(flechaSprite);
 }
 
 // Initial calls
