@@ -76,6 +76,27 @@ async function loadSomething(directionTexture, targetX, targetY, scale1, scale2)
 
   return sprite;
 }
+// Función para cargar imágenes de interaccion
+async function loadSomeArt(directionTexture, targetX, targetY, widthN, heightM) {
+  const texture = await PIXI.Assets.load(directionTexture);
+  const sprite = new PIXI.Sprite(texture);
+
+  // Escalar las coordenadas lógicas a las dimensiones reales de la pantalla
+  const scaleX = app.screen.width / 1920;
+  const scaleY = app.screen.height / 1080;
+
+  sprite.x = targetX * scaleX;
+  sprite.y = targetY * scaleY;
+
+  sprite.anchor.set(0.5, 0.5);
+  sprite.width = widthN;
+  sprite.height = heightM;
+  //sprite.scale.set(1, 1);
+
+  app.stage.addChild(sprite);
+
+  return sprite;
+}
 // Función para cargar algo (imágenes) con interacción
 async function loadSomethingInteractive(directionTexture, targetX, targetY, scale1, scale2) {
   const texture = await PIXI.Assets.load(directionTexture);
@@ -177,4 +198,4 @@ function setupKeyControls(speed = 5) {
 }
 
 // Exportar las funciones
-export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete, setupKeyControls };
+export { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, loadSomeArt, loadSomethingInteractive, saveImagePosition, loadImagePositions, moveCarrete, setupKeyControls };
