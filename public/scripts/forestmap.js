@@ -56,37 +56,43 @@ async function loadMap() {
     });
 
 
-    for (let i = 0; i < 3; i++) {
-      // Generar posiciones aleatorias dentro de los rangos dados
-      const randomX = Math.random() * (600 - 200) + 200; // Rango de 100 a width-100
-      const randomY = Math.random() * (600 - 200) + 200;
-  
-      //const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
-      const lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", randomX, randomY, 0.9, 0.9);
+    // Load the LIENZOs sprite
+    let lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 600, 1, 1);
       lienzoSprites.push(lienzoSprite);
-      lienzoSprites[i].interactive = true;
-      lienzoSprites[i].buttonMode = true;
+      lienzoSprites[0].interactive = true;
+      lienzoSprites[0].buttonMode = true;
     
-      lienzoSprites[i].on("pointerdown", () => {
+      lienzoSprites[0].on("pointerdown", () => {
         window.location.href = "gallery.html";
       });
-    }
-  
-    // Cargar tarros de cerveza
-    for (let i = 0; i < 2; i++) {
-        const randomX = Math.random() * ((screen.width-200)) + 100; // Rango de 100 a width-100
-        const randomY = Math.random() * (900 - 600) + 600; // Rango de 600 a 900
+
+    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 700, 600, 1, 1);
+      lienzoSprites.push(lienzoSprite);
+      lienzoSprites[1].interactive = true;
+      lienzoSprites[1].buttonMode = true;
     
-        //const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
-        const beerSprite = await loadSomething("./assets/TABERNAICON.png", randomX, randomY, 0.6, 0.6);
-        beerSprites.push(beerSprite);
-        beerSprites[i].interactive = true;
-        beerSprites[i].buttonMode = true;
+      lienzoSprites[1].on("pointerdown", () => {
+        window.location.href = "gallery.html";
+      });
+      
+    lienzoSprite = await loadSomething("./assets/GALERIADEARTE.png", 500, 800, 1, 1);
+      lienzoSprites.push(lienzoSprite);
+      lienzoSprites[2].interactive = true;
+      lienzoSprites[2].buttonMode = true;
     
-        beerSprites[i].on("pointerdown", () => {
+      lienzoSprites[2].on("pointerdown", () => {
+        window.location.href = "gallery.html";
+      });
+    
+    let beerSprite = await loadSomething("./assets/TABERNAICON.png", 700, 800, 0.7, 0.7);
+
+    beerSprites.push(beerSprite);
+        beerSprites[0].interactive = true;
+        beerSprites[0].buttonMode = true;
+    
+    beerSprites[0].on("pointerdown", () => {
         window.location.href = "taberna.html";
         });
-    }
 
     // Function to check if a new sprite collides with any existing ones
     // Load caballete images
@@ -98,7 +104,7 @@ async function loadMap() {
 
     // SECCION CARGAR CARRETA
 
-    carreteSprite = await loadSomething("./assets/carreta1.png", 400, 600, 1, 1);
+    carreteSprite = await loadSomething("./assets/carreta1.png", 800, 700, 1, 1);
     characterSprite = await loadCharacter(1200, 420, 1, 1);
 
     // Configurar los puntos de destino en el centro de la pantalla
@@ -108,10 +114,12 @@ async function loadMap() {
     const areaY = (window.innerHeight - areaHeight) / 2;
 
     // Generar 10 puntos en el área central
-    const targetPoints = Array.from({ length: 10 }, () => ({
-        x: Math.random() * areaWidth + areaX,
-        y: Math.random() * areaHeight + areaY,
-    }));
+    const targetPoints = [
+        { x: 1000, y: 1100 },
+        { x: 450, y: 1000 },
+        { x: 450, y: 850 },
+        { x: 450, y: 1100 },
+    ];
 
     let targetIndex = 2; // Índice del punto de destino actual
     const tolerance = 10; // Tolerancia para llegar al destino
@@ -124,8 +132,6 @@ async function loadMap() {
     carreteSprite.on("pointerdown", () => {
         window.location.href = "tienda.html";
     });
-
-    setupKeyControls();
 
     app.ticker.add(() => {
         const currentTime = Date.now();
@@ -142,8 +148,8 @@ async function loadMap() {
                 lastCarreteMoveTime = currentTime; // Reinicia el temporizador de espera
             } else {
                 // Mover la carreta hacia el destino
-                carreteSprite.x += dx * 0.05; // Ajusta velocidad en X
-                carreteSprite.y += dy * 0.05; // Ajusta velocidad en Y
+                carreteSprite.x += dx * 0.009; // Ajusta velocidad en X
+                carreteSprite.y += dy * 0.009; // Ajusta velocidad en Y
             }
         }
     });

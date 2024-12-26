@@ -1,8 +1,8 @@
-import { 
-  initializePixiApplication, 
-  loadCharacter, 
-  loadSomethingInteractive, 
-  saveImagePosition, 
+import {
+  initializePixiApplication,
+  loadCharacter,
+  loadSomething,
+  saveImagePosition,
   loadImagePositions,
   setupKeyControls
 } from './shared.js';
@@ -34,14 +34,50 @@ async function loadGallery() {
 
   app.stage.addChild(gallerySprite);
 
+  const dibujo1 = await loadSomething('assets/DIBUJO1.png', 550, 650, 0.2, 0.2);
+  dibujo1.interactive = true;
+  dibujo1.buttonMode = true;
+  const dibujo2 = await loadSomething('assets/DIBUJO2.png', 750, 650, 0.2, 0.2);
+  dibujo2.interactive = true;
+  dibujo2.buttonMode = true;
+  const dibujo3 = await loadSomething('assets/DIBUJO3.png', 330, 650, 0.2, 0.2);
+  dibujo3.interactive = true;
+  dibujo3.buttonMode = true;
+  const puerta1 = await loadSomething('assets/puerta.png', 150, 720, 1, 1);
+  puerta1.interactive = true;
+  puerta1.buttonMode = true;
+  const puerta2 = await loadSomething('assets/puerta.png', 1780, 850, 1, 1);
+  puerta2.interactive = true;
+  puerta2.buttonMode = true;
+
   // Load the character
   characterSprite = await loadCharacter(300, 800, 2, 2);
+
+  dibujo1.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=1';
+  });
+
+  dibujo2.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=2';
+  });
+
+  dibujo3.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=3';
+  });
+
+  puerta1.on('pointerdown', () => {
+    window.location.href = 'forest_map.html';
+  });
+
+  puerta2.on('pointerdown', () => {
+    window.location.href = 'forest_map.html';
+  });
 
   // Set up key controls for the character
   setupKeyControls();
 
-  // Add the ticker logic for detecting interactions
-  setupLocationDetection();
+  /*// Add the ticker logic for detecting interactions
+  setupLocationDetection();*/
 
   // Add the back arrow
   await loadBackArrow();

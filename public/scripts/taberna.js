@@ -1,4 +1,4 @@
-import { initializePixiApplication, loadCharacter, moveCharacterTo} from "./shared.js";
+import { initializePixiApplication, loadCharacter, moveCharacterTo } from "./shared.js";
 
 const app = new PIXI.Application({
   width: window.innerWidth,
@@ -30,7 +30,7 @@ async function loadTaberna() {
 
   // Añadir Estadarte Evento
   loadEstandarteEvento();
-  
+
   // Añadir Estadarte Evento
   loadEstandarteDestacado();
 
@@ -42,7 +42,7 @@ async function loadTaberna() {
 
   // Añadir GUILDMASTER
   await addGUILDMASTER();
-  
+
 
   // Añadir Grunt
   await addGrunt();
@@ -75,14 +75,14 @@ async function loadTaberna() {
   transparentBox1.on("pointerdown", () => {
     characterSprite = moveCharacterTo(195, 354); // Mover el personaje hacia el transparentBox1
     window.location.href = "index.html"; // Regresar al mapa
-});
+  });
 
   app.stage.addChild(transparentBox1);
 
 
   // Cargar el personaje
   characterSprite = await loadCharacter(700, 700, 2.5, 2.5);
-  setupKeyControls();  
+  setupKeyControls();
   // Inicia la conversación automáticamente
   showConversation();
 
@@ -140,9 +140,9 @@ async function loadEstandarteEvento() {
   const estandarteEventoSprite = new PIXI.Sprite(estandarteEventoTexture);
 
   // Establecer la posición y el tamaño del estandarte
-  estandarteEventoSprite.x = 160; // Puedes cambiar las coordenadas X e Y a donde lo necesites
+  estandarteEventoSprite.x = 20; // Puedes cambiar las coordenadas X e Y a donde lo necesites
   estandarteEventoSprite.y = -50; // Cambia la posición Y
-  estandarteEventoSprite.width = 225; // Ajusta el tamaño a tu gusto
+  estandarteEventoSprite.width = 420; // Ajusta el tamaño a tu gusto
   estandarteEventoSprite.height = 420; // Ajusta el tamaño a tu gusto
 
   // Hacer la imagen interactiva
@@ -287,12 +287,12 @@ async function showDialog(text, x, y) {
 
   // Crear el texto del cuadro de diálogo
   const dialogText = new PIXI.Text(text, {
-      fontFamily: 'Courier New',
-      fontSize: 16,
-      fill: 0x000000, // Color negro
-      align: 'center',
-      wordWrap: true,
-      wordWrapWidth: 150, // Ajustar ancho del texto al ancho de la burbuja
+    fontFamily: 'Courier New',
+    fontSize: 16,
+    fill: 0x000000, // Color negro
+    align: 'center',
+    wordWrap: true,
+    wordWrapWidth: 150, // Ajustar ancho del texto al ancho de la burbuja
   });
 
   dialogText.anchor.set(0.5, 0.85); // Centrar texto dentro de la burbuja
@@ -311,35 +311,35 @@ async function showDialog(text, x, y) {
 
   // Eliminar el cuadro de diálogo después de 3 segundos
   setTimeout(() => {
-      app.stage.removeChild(dialogContainer);
+    app.stage.removeChild(dialogContainer);
   }, 4000);
 }
 
 // Función para añadir el LoreMaster
 async function addLoreMaster() {
-    const LoreMasterTexture = await PIXI.Assets.load("./assets/CHARACTER22NAME.png");
-    const LoreMasterSprite = new PIXI.Sprite(LoreMasterTexture);
+  const LoreMasterTexture = await PIXI.Assets.load("./assets/CHARACTER22NAME.png");
+  const LoreMasterSprite = new PIXI.Sprite(LoreMasterTexture);
 
-    LoreMasterSprite.x = app.screen.width * 0.4; // Posición en X
-    LoreMasterSprite.y = app.screen.height * 0.62; // Posición en Y
-    LoreMasterSprite.anchor.set(0.5, 0.5);
-    LoreMasterSprite.scale.set(1.1, 1.1);
+  LoreMasterSprite.x = app.screen.width * 0.4; // Posición en X
+  LoreMasterSprite.y = app.screen.height * 0.62; // Posición en Y
+  LoreMasterSprite.anchor.set(0.5, 0.5);
+  LoreMasterSprite.scale.set(1.1, 1.1);
 
-    app.stage.addChild(LoreMasterSprite);
+  app.stage.addChild(LoreMasterSprite);
 
 }
 
 // Función para añadir el Grunt
 async function addGrunt() {
-    const GruntTexture = await PIXI.Assets.load("./assets/CHARACTER12NAME.png");
-    const GruntSprite = new PIXI.Sprite(GruntTexture);
+  const GruntTexture = await PIXI.Assets.load("./assets/CHARACTER12NAME.png");
+  const GruntSprite = new PIXI.Sprite(GruntTexture);
 
-    GruntSprite.x = app.screen.width * 0.1; // Posición en X
-    GruntSprite.y = app.screen.height * 0.6; // Posición en Y
-    GruntSprite.anchor.set(0.5, 0.5);
-    GruntSprite.scale.set(1.1, 1.1);
+  GruntSprite.x = app.screen.width * 0.1; // Posición en X
+  GruntSprite.y = app.screen.height * 0.6; // Posición en Y
+  GruntSprite.anchor.set(0.5, 0.5);
+  GruntSprite.scale.set(1.1, 1.1);
 
-    app.stage.addChild(GruntSprite);
+  app.stage.addChild(GruntSprite);
 
 }
 
