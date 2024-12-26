@@ -79,7 +79,11 @@ async function loadMap() {
     const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
 
     const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
+    
     beerSprites.push(beerSprite); // Agregar el tarro de cerveza al arreglo
+    beerSprites[i].on("pointerdown", () => {
+      window.location.href = "taberna.html";
+    });
   }
   //SECCION CARGAR CARRETA
 
@@ -92,44 +96,6 @@ async function loadMap() {
     const currentTime = Date.now();
     const characterBounds = characterSprite.getBounds();
     const carretaBounds = carreteSprite.getBounds();
-
-    lienzoSprites.forEach((lienzoSprite, index) => {
-      const lienzoBounds = lienzoSprite.getBounds();
-      if (
-        Math.abs(characterBounds.x - lienzoBounds.x) < tolerance &&
-        Math.abs(characterBounds.y - lienzoBounds.y) < tolerance
-      ) {
-        window.location.href = `gallery.html?lienzo=${index}`;
-      }
-    });
-    
-    // Comprobar si el personaje está cerca de un tarro de cerveza
-    beerSprites.forEach((beerSprite, index) => {
-      const beerBounds = beerSprite.getBounds();
-      if (
-        Math.abs(characterBounds.x - beerBounds.x) < tolerance &&
-        Math.abs(characterBounds.y - beerBounds.y) < tolerance
-      ) {
-        window.location.href = `taberna.html?beer=${index}`; // Redirigir a la página taberna.html
-      }
-    });
-    
-
-    const beerBounds = beerSprites[0].getBounds();
-    console.log(characterBounds);
-    console.log(beerBounds);
-    if (Math.abs(characterBounds.x - beerBounds.x) < tolerance &&
-        Math.abs(characterBounds.y - beerBounds.y) < tolerance) {
-        window.location.href = "gallery.html";
-    }
-
-    const lienzoBounds = lienzoSprites[0].getBounds();
-    console.log(characterBounds);
-    console.log(lienzoBounds);
-    if (Math.abs(characterBounds.x - lienzoBounds.x) < tolerance &&
-      Math.abs(characterBounds.y - lienzoBounds.y) < tolerance) {
-      window.location.href = "gallery.html";
-    }
 
     if (Math.abs(characterBounds.x - carretaBounds.x) < tolerance &&
       Math.abs(characterBounds.y - carretaBounds.y) < tolerance) {

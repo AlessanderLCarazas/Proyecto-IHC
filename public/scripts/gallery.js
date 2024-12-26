@@ -3,7 +3,8 @@ import {
   loadCharacter, 
   loadSomethingInteractive, 
   saveImagePosition, 
-  loadImagePositions 
+  loadImagePositions,
+  setupKeyControls
 } from './shared.js';
 
 const app = new PIXI.Application({
@@ -20,7 +21,6 @@ document.body.appendChild(app.view);
 initializePixiApplication(app);
 
 let characterSprite; // The character sprite
-const speed = 10; // Movement speed
 const tolerance = 25; // Distance tolerance for detecting locations
 
 // Load the gallery

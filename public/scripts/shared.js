@@ -145,7 +145,7 @@ function moveCarrete(carreteSprite, targetX, targetY) {
 }
 
 // Add movement controls (arrows and WASD)
-function setupKeyControls(speed = 1) {
+function setupKeyControls(speed = 5) {
   const keysPressed = {}; // Track currently pressed keys
 
   window.addEventListener("keydown", (event) => {
