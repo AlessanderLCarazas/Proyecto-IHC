@@ -1,6 +1,6 @@
 # 🎨 LOVART: La Red Social para Artistas 🖌️
-![image](![LOGO](https://github.com/user-attachments/assets/98ad4ea6-df1d-443e-8b51-b055f72dd4b3)
-)
+![LOGO](https://github.com/user-attachments/assets/cab190a3-91fc-4862-b6a7-8bc21fd9ba32)
+
 
 ## 📅 Etapa 1: Propuesta del Proyecto 
 
