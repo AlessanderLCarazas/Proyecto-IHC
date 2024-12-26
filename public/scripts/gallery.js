@@ -3,6 +3,7 @@ import {
   loadCharacter, 
   loadSomethingInteractive,
   loadSomeArt,  
+  loadSomething,
   saveImagePosition, 
   loadImagePositions,
   setupKeyControls
@@ -37,6 +38,8 @@ const galleryImages = [
   { file: './assets/DIBUJO3.png', x: 710, y: 500, width: H, height: W, targetUrl: 'cuadro.html?image=3' },
 ];
 
+const tolerance = 25; // Distance tolerance for detecting locations
+let flechaSprite; // The back arrow sprite
 
 // Load the gallery
 async function loadGallery() {
@@ -48,9 +51,24 @@ async function loadGallery() {
 
   app.stage.addChild(gallerySprite);
 
+  const dibujo1 = await loadSomething('assets/DIBUJO1.png', 550, 650, 0.2, 0.2);
+  dibujo1.interactive = true;
+  dibujo1.buttonMode = true;
+  const dibujo2 = await loadSomething('assets/DIBUJO2.png', 750, 650, 0.2, 0.2);
+  dibujo2.interactive = true;
+  dibujo2.buttonMode = true;
+  const dibujo3 = await loadSomething('assets/DIBUJO3.png', 330, 650, 0.2, 0.2);
+  dibujo3.interactive = true;
+  dibujo3.buttonMode = true;
+  const puerta1 = await loadSomething('assets/puerta.png', 150, 720, 1, 1);
+  puerta1.interactive = true;
+  puerta1.buttonMode = true;
+  const puerta2 = await loadSomething('assets/puerta.png', 1780, 850, 1, 1);
+  puerta2.interactive = true;
+  puerta2.buttonMode = true;
+
   // Load the character
   characterSprite = await loadCharacter(700, 800, 1, 1);
-
 
   // Load the portals
   await loadPortals();
@@ -75,6 +93,32 @@ async function loadGallery() {
   }
   //setupLocationDetection();
   setupPortalDetection();
+
+  dibujo1.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=1';
+  });
+
+  dibujo2.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=2';
+  });
+
+  dibujo3.on('pointerdown', () => {
+    window.location.href = 'cuadro.html?image=3';
+  });
+
+  puerta1.on('pointerdown', () => {
+    window.location.href = 'forest_map.html';
+  });
+
+  puerta2.on('pointerdown', () => {
+    window.location.href = 'forest_map.html';
+  });
+
+  /*// Add the ticker logic for detecting interactions
+  setupLocationDetection();*/
+
+  // Add the back arrow
+  await loadBackArrow();
 }
 
 // Load saved image positions
@@ -186,6 +230,30 @@ function setupPortalDetection() {
   });
   
 }*/
+
+// Load the back arrow
+async function loadBackArrow() {
+  const flechaTexture = await PIXI.Assets.load('./assets/flecha.png');
+  flechaSprite = new PIXI.Sprite(flechaTexture);
+
+  flechaSprite.x = 5; // Position the arrow in the top left corner
+  flechaSprite.y = 5;
+
+  // Scale the arrow to 20% of its original size
+  flechaSprite.scale.set(0.2);
+
+  // Make the arrow interactive
+  flechaSprite.interactive = true;
+  flechaSprite.buttonMode = true;
+
+  // Add functionality to go back to the previous page
+  flechaSprite.on('pointerdown', () => {
+    window.history.back(); // Go back to the previous page
+  });
+
+  // Add the back arrow to the stage
+  app.stage.addChild(flechaSprite);
+}
 
 // Initial calls
 loadGallery();

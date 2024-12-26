@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('assets/EVENTFINALDEFAULTDESIGN.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+
+        }
+
+        .owncontainer {
+            display: grid;
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr 2fr 1fr;
+            height: 100vh;
+            gap: 10px;
+        }
+
+        .winner-section {
+            width: 110%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.5em;
+            text-align: center;
+            transform: translate(0%, 25%);
+        }
+
+        .winner-section .user-image {
+            max-width: 20%;
+            border-radius: 50%;
+            /* La imagen puede ser como máximo del 90% del ancho del contenedor */
+            /* Centra la imagen */
+        }
+
+        .winner-section .winning-image {
+            max-width: 90%;
+            max-height: 90%;
+            min-height: auto;
+            min-width: none;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        .user-profile {
+            display: flex;
+            justify-content: flex-start;
+            /* Alinea los elementos al inicio (horizontalmente a la izquierda) */
+            align-items: flex-start;
+            /* Alinea los elementos verticalmente al inicio (parte superior) */
+            text-align: left;
+            /* Asegura que cualquier texto también esté alineado a la izquierda */
+        }
+
+
+        .participants-section {
+            padding: 20px;
+            overflow-y: auto;
+            transform: translate(15%, 55%);
+            width: 55%;
+            height: 65%;
+        }
+
+        .participant {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #000000;
+            border-radius: 8px;
+        }
+
+        .participant-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .participant-image {
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .participant-drawing {
+            text-align: center;
+        }
+
+        .drawing-image {
+            max-width: 100px;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .event-name {
+            grid-row: 2;
+            grid-column: 2;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            font-size: 1.5em;
+            width: 90%;
+            transform: translate(15%, 10%);
+        }
+
+        .event-content {
+            display: flex;
+            align-items: center;
+            /* Espacio entre la imagen y el texto */
+        }
+
+        .event-image {
+            max-width: 30%;
+            max-height: 30%;
+            border-radius: 50%;
+            margin-right: 5%;
+        }
+
+        .event-title {
+            font-size: 1em;
+            /* Letras grandes */
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .banner-section {
+            grid-row: 2;
+            grid-column: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 60%;
+            text-align: center;
+            /* Ajusta el ancho */
+            height: 140%;
+            /* Ajusta la altura */
+            transform: translate(48%, -60%);
+            /* Ajusta la posición */
+        }
+
+
+        .banner-image {
+            width: 60%;
+            /* Ajusta el tamaño de la imagen */
+            height: auto;
+            margin-bottom: 15px;
+            /* Espacio entre la imagen y el texto */
+        }
+
+        .banner-title {
+            font-size: 2em;
+            /* Tamaño destacado para el título */
+            font-weight: bold;
+            margin: 0;
+            color: #ffffff;
+            /* Color del texto */
+        }
+
+        .banner-description {
+            font-size: 1.2em;
+            color: #d8d8d8;
+            margin-top: 5px;
+        }
+
+        .user-name {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="btn btn-primary">
+        <i class="fa fa-house"></i>
+    </a>    
+    <div class="owncontainer">
+        <!-- Winner Section -->
+        <div class="winner-section">
+            <div class="user-profile">
+                <img src="assets/antenita.png" alt="User Image" class="user-image">
+                <div class="user-name">
+                    <h3>Antenita_Artist</h3>
+                </div>
+
+            </div>
+            <div class="drawing-winning">
+                <div class="winning-image">
+                    <h4>Artwork ganador hasta el momento</h4>
+                </div>
+                <img src="assets/DIBUJO6.jpg" alt="Winning Image" class="winning-image">
+            </div>
+        </div>
+
+        <!-- Participants Section -->
+        <div class="participants-section">
+            <h2>Participantes Actuales</h2>
+            <!-- Repite este bloque para cada participante -->
+            <div class="participant">
+                <!-- Información del participante -->
+                <div class="participant-info">
+                    <img src="assets/profile1.jpg" alt="Imagen del participante" class="participant-image">
+                    <h3 class="user-name">Grand+ArtistPrix</h3>
+                </div>
+                <div>
+                    <h3>Dibujo:</h3>
+                </div>
+                <!-- Dibujo del participante -->
+                <div class="participant-drawing">
+
+                    <img src="assets/DIBUJO7.jpg" alt="Dibujo del participante" class="drawing-image">
+                </div>
+            </div>
+            <div class="participant">
+                <!-- Información del participante -->
+                <div class="participant-info">
+                    <img src="assets/GUILDMASTER.png" alt="Imagen del participante" class="participant-image">
+                    <h3 class="user-name">GuildMaster</h3>
+                    
+                </div>
+                <div>
+                    <h3>Dibujo:</h3>
+                </div>
+                <!-- Dibujo del participante -->
+                <div class="participant-drawing">
+                    <img src="assets/DIBUJO8.jpg" alt="Dibujo del participante" class="drawing-image">
+                </div>
+            </div>
+            <div class="participant">
+                <!-- Información del participante -->
+                <div class="participant-info">
+                    <img src="assets/newbie.png" alt="Imagen del participante" class="participant-image">
+                    <h3 class="user-name">Grand_newbya</h3>
+                </div>
+                <div>
+                    <h3>Dibujo:</h3>
+                </div>
+                <!-- Dibujo del participante -->
+                <div class="participant-drawing">
+
+                    <img src="assets/DIBUJO9.jpg" alt="Dibujo del participante" class="drawing-image">
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Event Name Section -->
+        <div class="event-name">
+            <div class="event-name">
+                <div class="event-content">
+                    <img src="assets/DIBUJO1.png" alt="Imagen del Evento" class="event-image">
+                    <h1 class="event-title">Dibujos de la Comunidad</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Banner Section -->
+        <div class="banner-section">
+            <img src="assets/emblem2.png" alt="Símbolo del Evento" class="banner-image">
+            <h2 class="banner-title">Reward!!!</h2>
+            <span class="banner-description">Gánate esta bonita insignia de Gato</span>
+        </div>
+
+    </div>
+</body>
+
+</html>

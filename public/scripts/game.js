@@ -1,11 +1,11 @@
-import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, moveCarrete, setupKeyControls} from "./shared.js";
+import { initializePixiApplication, loadCharacter, moveCharacterTo, loadSomething, moveCarrete, setupKeyControls } from "./shared.js";
 
 const app = new PIXI.Application({
-  width: window.innerWidth,
-  height: window.innerHeight,
-  antialiasing: true,
-  transparent: false,
-  resolution: 1,
+    width: window.innerWidth,
+    height: window.innerHeight,
+    antialiasing: true,
+    transparent: false,
+    resolution: 1,
 });
 
 app.renderer.backgroundColor = 0xff1234;
@@ -20,98 +20,93 @@ let beerSprites = [];
 
 //SPRITES USING
 let characterSprite;
-let carreteSprite; // Sprite de la carreta
+let sprites = []; // Sprite de la carreta
 
 //SOME DIFFERENT VARIABLES
 
 const tolerance = 30;
 let lastCarreteMoveTime = 0;
 const moveInterval = 15000;
-
+const castillo1enun = "¡Sea bienvenido \n a la purga \n de los malditos \n Disfruta tu estancia!!."
 
 async function loadMap() {
-  const texture = await PIXI.Assets.load("./assets/mapsouthamerica.jpg");
-  const mapSprite = new PIXI.Sprite(texture);
+    const texture = await PIXI.Assets.load("./assets/mapsouthamerica.jpg");
+    const mapSprite = new PIXI.Sprite(texture);
 
-  mapSprite.width = app.screen.width;
-  mapSprite.height = app.screen.height;
+    mapSprite.width = app.screen.width;
+    mapSprite.height = app.screen.height;
 
-  mapSprite.interactive = true;
-  mapSprite.buttonMode = true;
+    mapSprite.interactive = true;
+    mapSprite.buttonMode = true;
 
-  app.stage.addChild(mapSprite);
+    app.stage.addChild(mapSprite);
 
-  // Load and position the house image at the top-left corner
-  const houseSprite = await loadSomething("./assets/profile4.png", 1700, 200, 0.3, 0.3);
-  houseSprite.interactive = true;
-  houseSprite.buttonMode = true;
+    // Load and position the house image at the top-left corner
+    const houseSprite = await loadSomething("./assets/profile4.png", 1000, 410, 0.2, 0.2);
+    houseSprite.interactive = true;
+    houseSprite.buttonMode = true;
 
-  houseSprite.scale.set(0.3, 0.3);
-  
-  // Add the house sprite to the stage
-  app.stage.addChild(houseSprite);
-  setupKeyControls();
-  
-  // Set up the click listener for the house sprite to redirect to gallery2.html
-  houseSprite.on("pointerdown", () => {
-    window.location.href = "galleryUser.html";
-  });
+    houseSprite.scale.set(0.3, 0.3);
 
-
-  for (let i = 0; i < 5; i++) {
-    // Generar posiciones aleatorias dentro de los rangos dados
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
-
-    const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
-    lienzoSprites.push(lienzoSprite);
-    lienzoSprites[i].interactive = true;
-    lienzoSprites[i].buttonMode = true;
-  
-    lienzoSprites[i].on("pointerdown", () => {
-      window.location.href = "gallery.html";
+    houseSprite.on("pointerdown", () => {
+        window.location.href = "galleryUser.html";
     });
-  }
 
-  // Cargar tarros de cerveza
-  for (let i = 0; i < 5; i++) {
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+    // Add the castle sprite to the stage
+    const sprite1 = await loadSomething("./assets/CASTILLO1.png", 1000, 200, 0.8, 0.8);
+    sprite1.interactive = true;
+    sprite1.buttonMode = true;
+    sprites.push(sprite1);
 
-    const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
+    const sprite2 = await loadSomething("./assets/CASTILLO2.png", 800, 600, 0.8, 0.8);
+    sprite2.interactive = true;
+    sprite2.buttonMode = true;
+    sprites.push(sprite2);
+
+    sprite1.on("pointerdown", () => {
+        window.location.href = "forest_map.html";
+    });
+
+    sprite1.on("pointerover", () => {
+        // Crear la burbuja
+        const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
+        bubble.x = 1000; // Posición de la burbuja
+        bubble.y = 200;
+        bubble.width = 200; // Ajustar tamaño de la burbuja
+        bubble.height = 100;
     
-    beerSprites.push(beerSprite); // Agregar el tarro de cerveza al arreglo
-    beerSprites[i].on("pointerdown", () => {
-      window.location.href = "taberna.html";
+        // Crear el texto
+        const message = new PIXI.Text(castillo1enun, {
+            fontFamily: "Arial",
+            fontSize: 28,
+            fill: "black",
+            align: "center",
+        });
+        message.anchor.set(0.1); // Centrar el texto dentro de la burbuja
+        message.x = bubble.width / 2;
+        message.y = bubble.height / 2;
+    
+        // Añadir el texto a la burbuja como su hijo
+        bubble.addChild(message);
+    
+        // Añadir la burbuja al escenario
+        app.stage.addChild(bubble);
+    
+        // Guardar referencias para eliminarlas luego
+        sprite1._bubble = bubble;
     });
-  }
-  //SECCION CARGAR CARRETA
+    
+    sprite1.on("pointerout", () => {
+        // Eliminar la burbuja y el texto al retirar el cursor
+        if (sprite1._bubble) {
+            app.stage.removeChild(sprite1._bubble);
+            sprite1._bubble.destroy();
+            sprite1._bubble = null;
+        }
+    });
 
-  carreteSprite = await loadSomething("./assets/carreta1.png", 200, 200, 0.4, 0.4);
-  characterSprite = await loadCharacter(1200, 320, 1, 1);
-
-  setupKeyControls();
-
-  app.ticker.add(() => {
-    const currentTime = Date.now();
-    const characterBounds = characterSprite.getBounds();
-    const carretaBounds = carreteSprite.getBounds();
-
-    if (Math.abs(characterBounds.x - carretaBounds.x) < tolerance &&
-      Math.abs(characterBounds.y - carretaBounds.y) < tolerance) {
-      window.location.href = "tienda.html";
-    }
-
-    if (currentTime - lastCarreteMoveTime >= moveInterval) {
-      // Si ha pasado un minuto, mueve la carreta
-      const randomX = Math.floor(Math.random() * (900 - 200)) + 200;
-      const randomY = Math.floor(Math.random() * (900 - 200)) + 200;
-      carreteSprite = moveCarrete(carreteSprite, randomX, randomY);
-
-      // Actualiza el tiempo de la última vez que se movió la carreta
-      lastCarreteMoveTime = currentTime;
-    }
-  });
+    characterSprite = await loadCharacter(1200, 320, 1, 1);
+    setupKeyControls();
 }
 
 loadMap();
