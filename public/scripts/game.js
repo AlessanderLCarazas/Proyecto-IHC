@@ -52,6 +52,44 @@ async function loadMap() {
         window.location.href = "galleryUser.html";
     });
 
+    houseSprite.on("pointerover", () => {
+        // Crear la burbuja
+        const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
+        bubble.x = 1100; // Posición de la burbuja
+        bubble.y = 500;
+        bubble.width = 200; // Ajustar tamaño de la burbuja
+        bubble.height = 100;
+    
+        // Crear el texto
+        const message = new PIXI.Text("Este es la \n Ciudad Inicial \n Visitala!!!", {
+            fontFamily: "Arial",
+            fontSize: 28,
+            fill: "black",
+            align: "center",
+        });
+        message.anchor.set(0.1); // Centrar el texto dentro de la burbuja
+        message.x = bubble.width / 2;
+        message.y = bubble.height / 2;
+    
+        // Añadir el texto a la burbuja como su hijo
+        bubble.addChild(message);
+    
+        // Añadir la burbuja al escenario
+        app.stage.addChild(bubble);
+    
+        // Guardar referencias para eliminarlas luego
+        sprite1._bubble = bubble;
+    });
+    
+    houseSprite.on("pointerout", () => {
+        // Eliminar la burbuja y el texto al retirar el cursor
+        if (sprite1._bubble) {
+            app.stage.removeChild(sprite1._bubble);
+            sprite1._bubble.destroy();
+            sprite1._bubble = null;
+        }
+    });
+
     // Add the castle sprite to the stage
     const sprite1 = await loadSomething("./assets/CASTILLO1.png", 1000, 200, 0.8, 0.8);
     sprite1.interactive = true;

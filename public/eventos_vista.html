@@ -69,6 +69,14 @@
             height: 65%;
         }
 
+        .participants-section h2 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #420000;
+            margin-bottom: 20px;
+            background-color: #d8d8d8;
+        }
+
         .participant {
             display: flex;
             align-items: center;
@@ -115,20 +123,32 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
-            font-size: 1.5em;
             width: 90%;
-            transform: translate(15%, 10%);
+            transform: translate(15%, 25%);
+        }
+
+        .event-name h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #000000;
+            margin-right: 10px;
+        }
+
+        .event-name p {
+            font-size: 1em;
+            color: #000000
         }
 
         .event-content {
             display: flex;
             align-items: center;
+            grid-row: 2;
             /* Espacio entre la imagen y el texto */
         }
 
         .event-image {
-            max-width: 30%;
-            max-height: 30%;
+            max-width: 20%;
+            max-height: 20%;
             border-radius: 50%;
             margin-right: 5%;
         }
@@ -190,9 +210,12 @@
 </head>
 
 <body>
-    <a href="index.html" class="btn btn-primary">
-        <i class="fa fa-house"></i>
-    </a>    
+    <header>
+        <a href="index.html" class="btn btn-primary">
+            <i class="fa fa-house"></i>
+        </a>
+    </header>
+    
     <div class="owncontainer">
         <!-- Winner Section -->
         <div class="winner-section">
@@ -235,7 +258,7 @@
                 <div class="participant-info">
                     <img src="assets/GUILDMASTER.png" alt="Imagen del participante" class="participant-image">
                     <h3 class="user-name">GuildMaster</h3>
-                    
+
                 </div>
                 <div>
                     <h3>Dibujo:</h3>
@@ -266,11 +289,13 @@
 
         <!-- Event Name Section -->
         <div class="event-name">
-            <div class="event-name">
-                <div class="event-content">
-                    <img src="assets/DIBUJO1.png" alt="Imagen del Evento" class="event-image">
-                    <h1 class="event-title">Dibujos de la Comunidad</h1>
-                </div>
+            <div class="event-content">
+                <img src="assets/DIBUJO1.png" alt="Imagen del Evento" class="event-image">
+                <h1 class="event-title">Evento Estoy Listo para morir!!!</h1>
+                <p>
+                    Evento completamente Libre. Participa con tus mejores dibujos y gana premios increíbles. ¡No te lo
+                    pierdas!
+                </p>
             </div>
 
         </div>

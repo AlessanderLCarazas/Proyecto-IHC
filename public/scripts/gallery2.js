@@ -42,17 +42,61 @@ async function loadGallery() {
 
   // Load the character
 
-  let element = await loadSomething('./assets/DIBUJO4.png', 100, 300, 0.7, 0.7);
-  defaultsSprites.push(element)
+  /*let element = await loadSomething('./assets/DIBUJO4.png', 100, 300, 0.7, 0.7);
+  defaultsSprites.push(element);
 
   element = await loadSomething('./assets/DIBUJO5.png', 300, 330, 0.7, 0.7);
-  defaultsSprites.push(element)
+  defaultsSprites.push(element);*/
 
-  element = await loadSomething('./assets/PALOMITA.png', 1500, 600, 1, 1);
-  defaultsSprites.push(element)
+  let element = await loadSomething('./assets/PALOMITA.png', 1500, 600, 1, 1);
+  defaultsSprites.push(element);
 
   element = await loadSomething('./assets/emblem5.png', 1750, 400, 0.6, 0.6);
-  defaultsSprites.push(element)
+  defaultsSprites.push(element);
+
+  const cofre = await loadSomething('./assets/cofre.png', 1000, 940, 1, 1);
+  cofre.interactive = true;
+  cofre.buttonMode = true;
+  defaultsSprites.push(cofre);
+
+  defaultsSprites[2].on("pointerover", () => {
+    // Crear la burbuja
+    const bubble = new PIXI.Sprite(PIXI.Texture.from("assets/burbuja2.png"));
+    bubble.x = 1000 ; // Posición de la burbuja
+    bubble.y = 1100;
+    bubble.width = 200; // Ajustar tamaño de la burbuja
+    bubble.height = 100;
+
+    // Crear el texto
+    const message = new PIXI.Text("No has Subido \n Dibujos!!!", {
+      fontFamily: "Arial",
+      fontSize: 28,
+      fill: "black",
+      align: "center",
+    });
+    message.anchor.set(0.1); // Centrar el texto dentro de la burbuja
+    message.x = bubble.width / 2;
+    message.y = bubble.height / 2;
+
+    // Añadir el texto a la burbuja como su hijo
+    bubble.addChild(message);
+
+    // Añadir la burbuja al escenario
+    app.stage.addChild(bubble);
+
+    // Guardar referencias para eliminarlas luego
+    defaultsSprites[2]._bubble = bubble;
+  });
+
+  defaultsSprites[2].on("pointerout", () => {
+    // Eliminar la burbuja y el texto al retirar el cursor
+    if (defaultsSprites[2]._bubble) {
+      app.stage.removeChild(defaultsSprites[2]._bubble);
+      defaultsSprites[2]._bubble.destroy();
+      defaultsSprites[2]._bubble = null;
+    }
+  });
+
 
   characterSprite = await loadCharacter(600, 600, 2, 2);
   // Set up key controls for the character
@@ -68,7 +112,7 @@ function loadSavedImages() {
   const savedPositions = loadImagePositions();
 
   savedPositions.forEach(async (position) => {
-    const newImage = await loadSomethingInteractive(position.imageId, position.x, position.y, 1, 1);
+    const newImage = await loadSomethingInteractive(position.imageId, position.x, position.y, 0.5, 0.5);
 
     newImage.x = position.x;
     newImage.y = position.y;
