@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Blogs de la Comunidad</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LovArtGame</title>
+
+    <!-- Firebase Scripts -->
+    <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('assets/COMUNIDAD.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .community-blogs {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .blogs-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+
+        .blog-card {
+            background: url('assets/blog-card-bg.jpg') no-repeat center center;
+            background-size: cover;
+            /* Asegura que el fondo se ajuste a la tarjeta */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000000;
+            margin: 10px 0;
+        }
+
+        .blog-author {
+            font-size: 1em;
+            color: #000000;
+            margin: 5px 0;
+        }
+
+        .blog-description {
+            font-size: 0.9em;
+            color: #000000;
+            margin: 10px 0 20px;
+        }
+
+        .blog-image {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            margin: 0 auto;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .blog-image:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="community-blogs">
+        <a href="index.html" class="btn btn-primary">
+            <i class="fa fa-house"></i>
+        </a>    
+        <h1 class="blogs-title">Blogs de la Comunidad</h1>
+        <div class="blogs-grid">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <h2 class="blog-title">Explorando el Arte Digital</h2>
+                <p class="blog-author">Por: Juan Perez</p>
+                <p class="blog-description">Descubre cómo las herramientas digitales están transformando el mundo del
+                    arte.</p>
+                <a href="blog_individual.html">
+                    <img src="assets/DIBUJO10.jpg" alt="Arte Digital" class="blog-image">
+                </a>
+            </div>
+
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <h2 class="blog-title">Inspiración desde la Naturaleza</h2>
+                <p class="blog-author">Por: María Lopez</p>
+                <p class="blog-description">Un vistazo a cómo los artistas encuentran inspiración en los paisajes
+                    naturales.</p>
+                <a href="blog_individual.html">
+                    <img src="assets/DIBUJO9.jpg" alt="Naturaleza" class="blog-image">
+                </a>
+            </div>
+
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <h2 class="blog-title">El Futuro de la Ilustración</h2>
+                <p class="blog-author">Por: Carlos Gomez</p>
+                <p class="blog-description">Cómo la tecnología está dando forma a nuevas formas de ilustración y diseño.
+                </p>
+                <a href="blog_individual.html">
+                    <img src="assets/DIBUJO8.jpg" alt="Futuro" class="blog-image">
+                </a>
+            </div>
+
+            <!-- Blog 4 -->
+            <div class="blog-card">
+                <h2 class="blog-title">Colores y Emociones</h2>
+                <p class="blog-author">Por: Ana Morales</p>
+                <p class="blog-description">Explora cómo los colores impactan nuestras emociones en el arte visual.</p>
+                <a href="blog_individual.html">
+                    <img src="assets/DIBUJO7.jpg" alt="Colores" class="blog-image">
+                </a>
+            </div>
+
+            <!-- Blog 5 -->
+            <div class="blog-card">
+                <h2 class="blog-title">Historias en Cómics</h2>
+                <p class="blog-author">Por: Diego Torres</p>
+                <p class="blog-description">Descubre el proceso creativo detrás de la creación de cómics cautivadores.
+                </p>
+                <a href="blog_individual.html">
+                    <img src="assets/DIBUJO6.jpg" alt="Cómics" class="blog-image">
+                </a>
+            </div>
+
+            <!-- Blog 6 -->
+            <div class="blog-card">
+                <h2 class="blog-title">Retratos Realistas</h2>
+                <p class="blog-author">Por: Sofia Herrera</p>
+                <p class="blog-description">Aprende los secretos para crear retratos realistas con detalles
+                    impresionantes.</p>
+                <a href="blog_individual.html">
+                    <img src="assets/portraits-blog.jpg" alt="Retratos" class="blog-image">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -60,8 +60,8 @@ async function loadMap() {
 
   for (let i = 0; i < 5; i++) {
     // Generar posiciones aleatorias dentro de los rangos dados
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+    const randomX = Math.random() * (1200 - 725) + 650; // Rango de 725 a 1000
+    const randomY = Math.random() * (900 - 300) + 200; // Rango de 300 a 700
 
     const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
     lienzoSprites.push(lienzoSprite);
@@ -116,10 +116,19 @@ carreteSprite.on("pointerdown", () => {
   window.location.href = "tienda.html";
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 setupKeyControls();
 
 app.ticker.add(() => {
   const currentTime = Date.now();
+<<<<<<< HEAD
+=======
+  const characterBounds = characterSprite.getBounds();
+  const carretaBounds = carreteSprite.getBounds();
+>>>>>>> main
 
   // Comprobar si se alcanzó el tiempo de espera
   if (currentTime - lastCarreteMoveTime >= stopDuration) {
