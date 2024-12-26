@@ -60,8 +60,8 @@ async function loadMap() {
 
   for (let i = 0; i < 5; i++) {
     // Generar posiciones aleatorias dentro de los rangos dados
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+    const randomX = Math.random() * (1200 - 725) + 650; // Rango de 725 a 1000
+    const randomY = Math.random() * (900 - 300) + 200; // Rango de 300 a 700
 
     const lienzoSprite = await loadSomething("./assets/caballete.png", randomX, randomY, 0.4, 0.4);
     lienzoSprites.push(lienzoSprite);
@@ -74,13 +74,15 @@ async function loadMap() {
   }
 
   // Cargar tarros de cerveza
-  for (let i = 0; i < 5; i++) {
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+  for (let i = 0; i < 2; i++) {
+    const randomX = Math.random() * (1200 - 725) + 650; // Rango de 725 a 1000
+    const randomY = Math.random() * (900 - 300) + 200; // Rango de 300 a 700
 
     const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
-    
-    beerSprites.push(beerSprite); // Agregar el tarro de cerveza al arreglo
+    beerSprites.push(beerSprite);
+    beerSprites[i].interactive = true;
+    beerSprites[i].buttonMode = true;
+  
     beerSprites[i].on("pointerdown", () => {
       window.location.href = "taberna.html";
     });

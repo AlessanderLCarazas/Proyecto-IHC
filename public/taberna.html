@@ -11,6 +11,16 @@
   
   <!-- Cargar PIXI.js -->
   <script src="https://pixijs.download/v7.1.1/pixi.min.js"></script>
+  <style>
+    canvas {
+      position: absolute;
+      /* Posicionarlo encima de otros elementos */
+      top: 0;
+      left: 0;
+      z-index: 1;
+      /* Asegura que el lienzo esté por encima de otros elementos */
+    }
+  </style>
 </head>
 
   <!-- Agregar el script de la taberna -->
