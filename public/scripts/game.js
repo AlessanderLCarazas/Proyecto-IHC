@@ -73,45 +73,72 @@ async function loadMap() {
     });
   }
 
-  // Cargar tarros de cerveza
-  for (let i = 0; i < 5; i++) {
-    const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
-    const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
+// Cargar tarros de cerveza
+for (let i = 0; i < 5; i++) {
+  const randomX = Math.random() * (1200 - 725) + 725; // Rango de 725 a 1000
+  const randomY = Math.random() * (900 - 300) + 300; // Rango de 300 a 700
 
-    const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
-    
-    beerSprites.push(beerSprite); // Agregar el tarro de cerveza al arreglo
-    beerSprites[i].on("pointerdown", () => {
-      window.location.href = "taberna.html";
-    });
-  }
-  //SECCION CARGAR CARRETA
+  const beerSprite = await loadSomething("./assets/beer-mug.png", randomX, randomY, 0.2, 0.2);
+  beerSprites.push(beerSprite);
+  beerSprites[i].interactive = true;
+  beerSprites[i].buttonMode = true;
 
-  carreteSprite = await loadSomething("./assets/carreta1.png", 200, 200, 0.4, 0.4);
-  characterSprite = await loadCharacter(1200, 320, 1, 1);
-
-  setupKeyControls();
-
-  app.ticker.add(() => {
-    const currentTime = Date.now();
-    const characterBounds = characterSprite.getBounds();
-    const carretaBounds = carreteSprite.getBounds();
-
-    if (Math.abs(characterBounds.x - carretaBounds.x) < tolerance &&
-      Math.abs(characterBounds.y - carretaBounds.y) < tolerance) {
-      window.location.href = "tienda.html";
-    }
-
-    if (currentTime - lastCarreteMoveTime >= moveInterval) {
-      // Si ha pasado un minuto, mueve la carreta
-      const randomX = Math.floor(Math.random() * (900 - 200)) + 200;
-      const randomY = Math.floor(Math.random() * (900 - 200)) + 200;
-      carreteSprite = moveCarrete(carreteSprite, randomX, randomY);
-
-      // Actualiza el tiempo de la última vez que se movió la carreta
-      lastCarreteMoveTime = currentTime;
-    }
+  beerSprites[i].on("pointerdown", () => {
+    window.location.href = "taberna.html";
   });
+}
+// SECCION CARGAR CARRETA
+
+carreteSprite = await loadSomething("./assets/carreta1.png", 200, 200, 0.4, 0.4);
+characterSprite = await loadCharacter(1200, 320, 1, 1);
+
+// Configurar los puntos de destino en el centro de la pantalla
+const areaWidth = 500;
+const areaHeight = 500;
+const areaX = (window.innerWidth - areaWidth) / 2;
+const areaY = (window.innerHeight - areaHeight) / 2;
+
+// Generar 10 puntos en el área central
+const targetPoints = Array.from({ length: 10 }, () => ({
+  x: Math.random() * areaWidth + areaX,
+  y: Math.random() * areaHeight + areaY,
+}));
+
+let targetIndex = 2; // Índice del punto de destino actual
+const tolerance = 10; // Tolerancia para llegar al destino
+let lastCarreteMoveTime = Date.now();
+const stopDuration = 5000; // Duración de la pausa en milisegundos (5 segundos)
+
+// Hacer interactiva la carreta para redirigir a la tienda
+carreteSprite.interactive = true;
+carreteSprite.buttonMode = true;
+carreteSprite.on("pointerdown", () => {
+  window.location.href = "tienda.html";
+});
+
+setupKeyControls();
+
+app.ticker.add(() => {
+  const currentTime = Date.now();
+
+  // Comprobar si se alcanzó el tiempo de espera
+  if (currentTime - lastCarreteMoveTime >= stopDuration) {
+    const target = targetPoints[targetIndex];
+    const dx = target.x - carreteSprite.x;
+    const dy = target.y - carreteSprite.y;
+
+    // Si llegó al destino, avanzar al siguiente punto
+    if (Math.abs(dx) < tolerance && Math.abs(dy) < tolerance) {
+      targetIndex = (targetIndex + 1) % targetPoints.length; // Siguiente punto en bucle
+      lastCarreteMoveTime = currentTime; // Reinicia el temporizador de espera
+    } else {
+      // Mover la carreta hacia el destino
+      carreteSprite.x += dx * 0.05; // Ajusta velocidad en X
+      carreteSprite.y += dy * 0.05; // Ajusta velocidad en Y
+    }
+  }
+});
+
 }
 
 loadMap();

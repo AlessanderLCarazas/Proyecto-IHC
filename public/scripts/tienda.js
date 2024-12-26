@@ -17,6 +17,7 @@ initializePixiApplication(app); // Inicializa la aplicación de PixiJS
 let dibujo1Sprite;
 let dibujo2Sprite;
 let dibujo3Sprite;
+let flechaSprite; // Agregar la flecha como sprite
 
 // Cargar el lienzo de la tienda de arte
 async function loadTienda() {
@@ -54,6 +55,24 @@ async function loadTienda() {
     window.location.href = "cuadroo.html?id=cuadroo3"; // Redirigir a la página de detalles del DIBUJO3
   });
   app.stage.addChild(dibujo3Sprite); // Añadir al escenario
+
+  // Cargar la flecha y añadirla a la esquina superior izquierda
+  const flechaTexture = await PIXI.Assets.load("./assets/flecha.png");
+  flechaSprite = new PIXI.Sprite(flechaTexture);
+
+  flechaSprite.x = 5; // Posicionar la flecha en la esquina superior izquierda
+  flechaSprite.y = 5;
+
+  // Reducir el tamaño de la flecha al 30% de su tamaño original (70% más pequeña)
+  flechaSprite.scale.set(0.2);
+
+  flechaSprite.interactive = true; // Hacer la flecha interactiva
+  flechaSprite.buttonMode = true; // Mostrar el cursor como un botón
+  flechaSprite.on("pointerdown", () => {
+    window.history.back(); // Retroceder a la página anterior
+  });
+
+  app.stage.addChild(flechaSprite); // Añadir la flecha al escenario
 }
 
 // Inicializar la tienda
