@@ -42,11 +42,11 @@ async function loadMap() {
   app.stage.addChild(mapSprite);
 
   // Load and position the house image at the top-left corner
-  const houseSprite = await loadSomething("./assets/profile4.png", 1700, 200, 0.3, 0.3);
+  const houseSprite = await loadSomething("./assets/house.png", 780, 470, 0.2, 0.2);
   houseSprite.interactive = true;
   houseSprite.buttonMode = true;
 
-  houseSprite.scale.set(0.3, 0.3);
+  houseSprite.scale.set(0.13, 0.13);
   
   // Add the house sprite to the stage
   app.stage.addChild(houseSprite);
