@@ -42,14 +42,17 @@ async function loadMap() {
     app.stage.addChild(mapSprite);
 
     // Load and position the house image at the top-left corner
-    const houseSprite = await loadSomething("./assets/profile4.png", 1700, 200, 0.3, 0.3);
+    const houseSprite = await loadSomething("./assets/profile4.png", 1100, 200, 0.3, 0.3);
     houseSprite.interactive = true;
     houseSprite.buttonMode = true;
 
     houseSprite.scale.set(0.3, 0.3);
 
-    characterSprite = await loadCharacter(1200, 420, 1, 1);
+    houseSprite.on("pointerdown", () => {
+        window.location.href = "galleryUser.html";
+    });
 
+    // Add the castle sprite to the stage
     const sprite1 = await loadSomething("./assets/CASTILLO1.png", 1000, 200, 0.8, 0.8);
     sprite1.interactive = true;
     sprite1.buttonMode = true;
@@ -59,15 +62,12 @@ async function loadMap() {
     sprite2.interactive = true;
     sprite2.buttonMode = true;
     sprites.push(sprite2);
-    
-    houseSprite.on("pointerdown", () => {
-        window.location.href = "galleryUser.html";
-    });
 
     sprite1.on("pointerdown", () => {
         window.location.href = "forest_map.html";
-    });        
+    });
 
+    characterSprite = await loadCharacter(1200, 320, 1, 1);
     setupKeyControls();
 }
 
